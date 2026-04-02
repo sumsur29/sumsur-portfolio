@@ -50,16 +50,16 @@ export default function Home() {
             </div>
           </Link>
 
-          <Link href="/apps" className="group">
+          <Link href="/experiments" className="group">
             <div className="relative overflow-hidden rounded-none border border-white/10 bg-white/[0.02] p-12 hover:bg-white/[0.04] transition-all duration-500 hover:border-white/20">
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-green-500/10 to-transparent rounded-full blur-3xl"></div>
               <div className="relative">
-                <div className="text-5xl mb-6 font-light">🛠️</div>
+                <div className="text-5xl mb-6 font-light">🧪</div>
                 <h2 className="text-2xl font-light mb-3 tracking-wide">
-                  Apps
+                  Experiments
                 </h2>
                 <p className="text-white/50 font-light leading-relaxed">
-                  Products in progress and shipped
+                  Side projects and prototypes
                 </p>
               </div>
             </div>
