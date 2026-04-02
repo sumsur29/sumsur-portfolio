@@ -25,8 +25,8 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
           ← Back to Writings
         </Link>
 
-        <article>
-          <header className="mb-12">
+        <article className="article-content">
+          <header className="mb-16">
             <div className="flex items-center gap-4 mb-6">
               <span className="text-xs tracking-widest uppercase text-white/40 font-light">
                 {article.category}
@@ -42,25 +42,26 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             <div className="h-px w-16 bg-white/20"></div>
           </header>
 
-          <div className="prose prose-invert prose-lg max-w-none 
-                          prose-headings:font-light prose-headings:tracking-tight
-                          prose-h1:text-4xl prose-h1:mb-10 prose-h1:mt-16
-                          prose-h2:text-3xl prose-h2:mb-8 prose-h2:mt-16 prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-4
-                          prose-h3:text-2xl prose-h3:mb-6 prose-h3:mt-12
-                          prose-p:text-white/70 prose-p:leading-loose prose-p:mb-8 prose-p:font-light prose-p:text-lg
-                          prose-strong:text-white prose-strong:font-medium
-                          prose-em:text-white/80 prose-em:italic
-                          prose-ul:my-8 prose-ul:list-disc prose-ul:pl-6 prose-ul:space-y-3
-                          prose-ol:my-8 prose-ol:list-decimal prose-ol:pl-6 prose-ol:space-y-3
-                          prose-li:text-white/70 prose-li:font-light prose-li:leading-relaxed
-                          prose-a:text-blue-400 prose-a:no-underline hover:prose-a:text-blue-300
-                          prose-blockquote:border-l-2 prose-blockquote:border-white/20 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-white/60 prose-blockquote:my-8
-                          prose-code:text-white/90 prose-code:bg-white/10 prose-code:px-1 prose-code:rounded
-                          prose-hr:border-white/10 prose-hr:my-16">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {article.content}
-            </ReactMarkdown>
-          </div>
+          <ReactMarkdown 
+            remarkPlugins={[remarkGfm]}
+            components={{
+              h1: ({node, ...props}) => <h1 className="text-4xl font-light mb-10 mt-16 tracking-tight" {...props} />,
+              h2: ({node, ...props}) => <h2 className="text-3xl font-light mb-8 mt-16 tracking-tight border-b border-white/10 pb-4" {...props} />,
+              h3: ({node, ...props}) => <h3 className="text-2xl font-light mb-6 mt-12 tracking-tight" {...props} />,
+              p: ({node, ...props}) => <p className="text-white/70 leading-loose mb-8 font-light text-lg" {...props} />,
+              strong: ({node, ...props}) => <strong className="text-white font-medium" {...props} />,
+              em: ({node, ...props}) => <em className="text-white/80 italic" {...props} />,
+              ul: ({node, ...props}) => <ul className="my-8 list-disc pl-6 space-y-3" {...props} />,
+              ol: ({node, ...props}) => <ol className="my-8 list-decimal pl-6 space-y-3" {...props} />,
+              li: ({node, ...props}) => <li className="text-white/70 font-light leading-relaxed" {...props} />,
+              a: ({node, ...props}) => <a className="text-blue-400 hover:text-blue-300 no-underline" {...props} />,
+              blockquote: ({node, ...props}) => <blockquote className="border-l-2 border-white/20 pl-6 italic text-white/60 my-8" {...props} />,
+              code: ({node, ...props}) => <code className="text-white/90 bg-white/10 px-1 rounded" {...props} />,
+              hr: ({node, ...props}) => <hr className="border-white/10 my-16" {...props} />,
+            }}
+          >
+            {article.content}
+          </ReactMarkdown>
         </article>
       </div>
     </main>
