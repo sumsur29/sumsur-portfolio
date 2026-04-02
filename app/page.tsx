@@ -67,6 +67,12 @@ export default function Home() {
 
         </div>
 
+        <div className="text-center mb-16">
+          <Link href="/about" className="inline-block text-white/60 hover:text-white transition-colors duration-300 font-light">
+            About me →
+          </Link>
+        </div>
+
         <footer className="pt-16 border-t border-white/10">
           <div className="flex justify-center gap-12 text-white/40 font-light">
             <a href="https://www.linkedin.com/in/suranasumeet" target="_blank" rel="noopener noreferrer" 
