@@ -410,5 +410,28 @@ And I'm still searching
 Still searching for the happiness
 that was promised to me
 when I was happy`
+  },
+  {
+    id: 'the-last-meeting',
+    title: 'The Last Meeting',
+    language: 'english',
+    image: '/poems/the-last-meeting.jpg',
+    text: `They make fake promises to not let distance come in their way
+But in their minds they know
+
+They tell white lies to talk daily like they do now
+But in their minds they know
+
+They make unrealistic plans to visit every month
+But in their minds they know
+
+They talk about all the impractical what-ifs
+But in their minds they know
+
+In their minds they really know
+That for all the what-ifs, and plans, and the lies to stay together
+
+This is the last meeting
+And they don't want to let go`
   }
 ]
