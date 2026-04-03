@@ -6,10 +6,10 @@ export default function Home() {
       <div className="max-w-5xl mx-auto px-6 py-24">
         
         <header className="mb-24 text-center">
-          <h1 className="text-7xl font-light mb-6 tracking-tight">
+          <h1 className="text-7xl font-light mb-6 tracking-tight bg-gradient-to-r from-white via-white/90 to-white bg-clip-text animate-gradient">
             Sumeet Surana
           </h1>
-          <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto mb-6"></div>
+          <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto mb-6 animate-pulse-slow"></div>
           <p className="text-xl text-white/60 font-light tracking-wide mb-2">
             सफ़र ख़ूबसूरत है मंज़िल से भी
           </p>

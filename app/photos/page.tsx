@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { getPhotos } from '@/lib/photos'
 
 const categories = [
   {
@@ -33,7 +34,15 @@ const categories = [
   }
 ]
 
-export default function Photos() {
+export default async function Photos() {
+  // Get photo counts for each category
+  const categoriesWithCounts = await Promise.all(
+    categories.map(async (category) => {
+      const photos = await getPhotos(category.slug)
+      return { ...category, count: photos.length }
+    })
+  )
+
   return (
     <main className="min-h-screen bg-black text-white">
       <div className="max-w-5xl mx-auto px-6 py-16">
@@ -53,7 +62,7 @@ export default function Photos() {
         </header>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {categories.map((category, index) => (
+          {categoriesWithCounts.map((category, index) => (
             <Link
               key={index}
               href={`/photos/${category.slug}`}
@@ -64,9 +73,14 @@ export default function Photos() {
                 
                 <div className="relative">
                   <div className="flex items-start justify-between mb-4">
-                    <h2 className="text-2xl font-light tracking-wide group-hover:text-white transition-colors">
-                      {category.title}
-                    </h2>
+                    <div>
+                      <h2 className="text-2xl font-light tracking-wide group-hover:text-white transition-colors mb-2">
+                        {category.title}
+                      </h2>
+                      <p className="text-white/30 text-xs font-light">
+                        {category.count} {category.count === 1 ? 'photo' : 'photos'}
+                      </p>
+                    </div>
                     <svg 
                       className="w-5 h-5 text-white/40 group-hover:text-white transition-all group-hover:translate-x-1" 
                       fill="none" 

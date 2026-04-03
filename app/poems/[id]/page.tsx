@@ -65,9 +65,14 @@ export default function PoemPage({ params }: { params: { id: string } }) {
         <div className={`lg:w-1/2 ${poem.image ? 'lg:ml-[50%]' : 'mx-auto max-w-3xl'} px-6 lg:px-12 py-16 lg:py-24`}>
           
           <header className="mb-12">
-            <h1 className="text-4xl lg:text-5xl font-light mb-4 tracking-tight">
-              {poem.title}
-            </h1>
+            <div className="flex justify-between items-start mb-4">
+              <h1 className="text-4xl lg:text-5xl font-light tracking-tight">
+                {poem.title}
+              </h1>
+              {poem.date && (
+                <span className="text-white/30 text-sm font-light mt-2">{poem.date}</span>
+              )}
+            </div>
             <div className="h-px w-16 bg-gradient-to-r from-white/30 to-transparent mb-4"></div>
             <p className="text-white/40 text-sm font-light">
               {poem.language === 'hindi' ? 'हिंदी' : 'English'}
@@ -83,7 +88,7 @@ export default function PoemPage({ params }: { params: { id: string } }) {
           )}
 
           <div className="prose prose-invert max-w-none">
-            <pre className="font-light text-lg lg:text-xl leading-relaxed whitespace-pre-wrap text-white/90">
+            <pre className={`font-light text-lg lg:text-xl leading-loose whitespace-pre-wrap text-white/90 ${poem.language === 'hindi' ? 'font-devanagari' : ''}`}>
 {poem.text}
             </pre>
           </div>

@@ -1,7 +1,7 @@
 import Link from 'next/link'
-import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { getPhotos } from '@/lib/photos'
+import PhotoLightbox from '@/components/PhotoLightbox'
 
 const categories = {
   nature: {
@@ -69,19 +69,7 @@ export default async function CategoryPage({ params }: { params: { category: str
         {photos.length > 0 ? (
           <div className="columns-1 md:columns-2 lg:columns-3 gap-4 space-y-4">
             {photos.map((photo, index) => (
-              <div key={index} className="break-inside-avoid">
-                <div className="relative group overflow-hidden rounded-sm border border-white/5 hover:border-white/20 transition-all duration-300">
-                  <Image
-                    src={photo.path}
-                    alt={photo.filename.replace(/\.[^/.]+$/, '')}
-                    width={800}
-                    height={800}
-                    className="w-full h-auto object-cover"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                </div>
-              </div>
+              <PhotoLightbox key={index} photo={photo} index={index} />
             ))}
           </div>
         ) : (

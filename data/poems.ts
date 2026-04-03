@@ -14,6 +14,7 @@ export const poems: Poem[] = [
     title: 'सुबह, शाम, रात',
     language: 'hindi',
     image: '/poems/4c11da81-6cb5-40f7-a805-55401d0a134d_rw_1200.jpg',
+    date: '2024',
     text: `सुबह से जब मैं मिला,
 वो बोली,
 "धुप ये मुझको सताए
@@ -48,6 +49,7 @@ export const poems: Poem[] = [
     title: 'Two Little Lambs',
     language: 'english',
     image: '/poems/a8e8453f-db60-4038-8ed1-a498b7a0deee_rw_1200.jpg',
+    date: '2024',
     text: `There once were two little lambs..
 One was shy and other was beauty..
 They both liked each other, as the shy would think..
@@ -96,6 +98,7 @@ The two little lambs beauty and shy..`
     title: 'If I Could Draw',
     language: 'english',
     image: '/poems/b0805591-b05e-4035-b22f-acac85a1372d_rw_1200.jpg',
+    date: '2024',
     text: `If i could draw i would draw her like this
 Her eyelids with a hint of red
 Her eyebrows of the perfect shape
@@ -122,6 +125,7 @@ If i could draw i would draw her like this`
     title: 'My Mornings Without You',
     language: 'english',
     image: '/poems/bda102cf-7f18-4479-83a4-4cfd192e2e45_rw_1200.jpg',
+    date: '2024',
     text: `To see your pretty face
 That smile on your lips
 The calmness and peace
@@ -145,6 +149,7 @@ My Mornings without you.`
     title: 'A Time Has Gone, And A Time Will Come',
     language: 'english',
     image: '/poems/c8c6c3b6-b5b2-4468-8c24-4d9299d46695_rw_1200.jpg',
+    date: '2024',
     text: `A TIME HAS GONE, AND A TIME WILL COME.
 THE TORNADOS IN YOUR MINDS WILL SOON BE CALM.
 
@@ -175,6 +180,7 @@ FOR A TIME HAS GONE AND A TIME WILL COME.`
     title: 'दिए हैं पंख बाज़ के',
     language: 'hindi',
     image: '/poems/cf355876-2137-4b21-9d05-844abbeb3f64_rw_1200.jpg',
+    date: '2024',
     text: `Diye hai pankh baaz k
 Aur kar diya kaach k ghar me band,
 Sab dikhta to hai par chhune jaau to takra jaata hu
@@ -209,6 +215,7 @@ To baaz ban k udhta hi jauga`
     title: 'उड़ने दो मुझे',
     language: 'hindi',
     image: '/poems/d680a48a-1ff8-4dfa-bdfa-2c9eca898118_rw_1200 (1).jpg',
+    date: '2024',
     text: `Udhne do mujhe
 Ye kalam mere pankh hai aur kaagaz mera aasmaan
 Yun duniya k niyamo se chalne me kya hi haasil hoga?
@@ -238,6 +245,7 @@ Yun mari hui duniya me marr kar kya hi haasil hoga?`
     title: 'तू काफ़ी है',
     language: 'hindi',
     image: '/poems/eb16c74f-1cfe-4250-9052-7dba3c8cfbe4_rw_1200.jpg',
+    date: '2024',
     text: `Maana yeh raat thodi lambi hai
 Thodi shaant aur thodi gehri hai
 Thokre hi to khaege.. aur kya..
@@ -344,6 +352,7 @@ Here's raising a toast to 2025 and entering 2026 with a new sense of self. May y
     title: 'Born Fearless',
     language: 'english',
     image: '/poems/born-fearless.jpg',
+    date: '2025',
     context: `Born fearless we grow full of doubts.`,
     text: `We are all born fearless,
 Carefree, and sure of self.
@@ -384,6 +393,7 @@ Afraid of things that makes him, him.`
     title: 'Still Searching',
     language: 'english',
     image: '/poems/still-searching.jpg',
+    date: '2025',
     text: `Going double on a friend's cycle
 Papa said that driving car is real happiness.
 On my morning commutes, I'm still searching
@@ -416,6 +426,7 @@ when I was happy`
     title: 'The Last Meeting',
     language: 'english',
     image: '/poems/the-last-meeting.jpg',
+    date: '2025',
     text: `They make fake promises to not let distance come in their way
 But in their minds they know
 
@@ -439,6 +450,7 @@ And they don't want to let go`
     title: 'इतने सालों बाद मिले हैं',
     language: 'hindi',
     image: '/poems/itne-saalo-baad.jpg',
+    date: '2025',
     text: `Itne saalo baad mile hai, tab bhi phone me
 Kuch kahoge nahi kya?
 
