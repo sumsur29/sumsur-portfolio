@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Noto_Sans_Devanagari, Cormorant, Alex_Brush } from "next/font/google";
+import { Noto_Sans_Devanagari, Cormorant } from "next/font/google";
 import "./globals.css";
 
 const geistSans = localFont({
@@ -14,6 +14,12 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
+const hamiltonSignature = localFont({
+  src: "./fonts/HamiltonSignature.ttf",
+  variable: "--font-signature",
+  weight: "400",
+});
+
 const notoDevanagari = Noto_Sans_Devanagari({
   subsets: ["devanagari"],
   variable: "--font-devanagari",
@@ -24,12 +30,6 @@ const cormorant = Cormorant({
   subsets: ["latin"],
   variable: "--font-cormorant",
   weight: ["300", "400", "500"],
-});
-
-const alexBrush = Alex_Brush({
-  subsets: ["latin"],
-  variable: "--font-signature",
-  weight: ["400"],
 });
 
 export const metadata: Metadata = {
@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${notoDevanagari.variable} ${cormorant.variable} ${alexBrush.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${notoDevanagari.variable} ${cormorant.variable} ${hamiltonSignature.variable} antialiased`}
       >
         {children}
       </body>
