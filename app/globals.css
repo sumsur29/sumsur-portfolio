@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  -webkit-overflow-scrolling: touch;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overscroll-behavior-y: none;
+}
+
 @keyframes pulse-slow {
   0%, 100% {
     opacity: 0.3;

@@ -112,7 +112,7 @@ export default function HomePage() {
     <>
       <LiquidCursor />
       
-      <main className="min-h-screen h-screen bg-black text-white relative overflow-y-auto overflow-x-hidden">
+      <main className="min-h-screen h-screen bg-black text-white relative overflow-y-auto overflow-x-hidden scroll-smooth">
         
         {/* Full-Page Fixed Background Photo */}
         <div className="absolute inset-0 z-0">
