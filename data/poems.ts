@@ -378,5 +378,37 @@ Or at every moment a little fear gets in
 And slowly grows inch by inch.
 Until the fearless child becomes full of fears
 Afraid of things that makes him, him.`
+  },
+  {
+    id: 'still-searching',
+    title: 'Still Searching',
+    language: 'english',
+    image: '/poems/still-searching.jpg',
+    text: `Going double on a friend's cycle
+Papa said that driving car is real happiness.
+On my morning commutes, I'm still searching
+
+Dancing on a passing baraat
+Bhaiyya said partying in a club is real happiness.
+On friday nights, I'm still searching
+
+Sleeping in naani's courtyard in summers
+Mama said a high rise apartment is real happiness.
+On my 2x2 balcony, I'm still searching
+
+Gulping sukha puri at a corner thela
+Bua said eating at a five star is real happiness.
+On every occasion, I'm still searching
+
+Now the friend and his cycle is gone
+No baraats on the roads anymore
+Naani and naani's courtyard both gone
+The corner thela is replaced by a mall
+
+And I'm still searching
+
+Still searching for the happiness
+that was promised to me
+when I was happy`
   }
 ]
