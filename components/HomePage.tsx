@@ -136,21 +136,24 @@ export default function HomePage() {
       
       {/* Full-Page Fixed Background Photo with Parallax */}
       <div 
-        className="fixed inset-0 z-0"
+        className="fixed inset-0 z-0 w-full h-full overflow-hidden"
         style={{
-          transform: `translateY(${scrollY * 0.3}px) scale(${1 + scrollY * 0.0002})`
+          transform: `translateY(${scrollY * 0.3}px) scale(${1 + scrollY * 0.0002})`,
+          minHeight: '100vh',
+          minWidth: '100vw'
         }}
       >
         <Image
           src="/photos/hero-singer.jpg"
           alt="Background"
           fill
-          className="object-cover"
+          className="object-cover w-full h-full"
           priority
           quality={95}
+          sizes="100vw"
         />
         {/* Gradient Overlay - stronger at bottom */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/95"></div>
+        <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-black/80 via-black/60 to-black/95"></div>
       </div>
 
       {/* Noise Texture */}
