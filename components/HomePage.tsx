@@ -143,7 +143,7 @@ export default function HomePage() {
           
           {/* Compact Header */}
           <header className="text-center mb-8 md:mb-12">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light mb-4 tracking-tight font-cormorant">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-normal mb-4 tracking-normal font-signature">
               {nameChars.map((char, i) => (
                 <span
                   key={i}
@@ -161,7 +161,7 @@ export default function HomePage() {
             
             <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto mb-4"></div>
             
-            <p className={`text-lg sm:text-lg md:text-xl text-white/80 font-light tracking-wide mb-2 font-devanagari drop-shadow-lg transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            <p className={`text-lg sm:text-lg md:text-xl text-white/80 font-light tracking-wide mb-2 font-devanagari drop-shadow-lg transition-all duration-1000 italic ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                style={{ animationDelay: '800ms' }}>
               {quote.hindi}
             </p>
