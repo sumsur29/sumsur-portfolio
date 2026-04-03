@@ -338,5 +338,45 @@ Here's raising a toast to 2025 and entering 2026 with a new sense of self. May y
 
 मैं जहाँ हूँ अब वही है
 ये पहाड़ों वाला घर।`
+  },
+  {
+    id: 'born-fearless',
+    title: 'Born Fearless',
+    language: 'english',
+    image: '/poems/born-fearless.jpg',
+    context: `Born fearless we grow full of doubts.`,
+    text: `We are all born fearless,
+Carefree, and sure of self.
+Somehow end up as full of doubts
+Afraid of living, we don't know how.
+
+Were we always like this?
+Or change along the way?
+When does our confidence falter?
+When does the fear creep in?
+
+Is it when we fall down
+While learning to walk.
+
+Or when we do something stupid
+While learning to be wise.
+
+Is it when we fail at something
+While learning to succeed.
+
+Or when we didn't get what we want
+While learning new things.
+
+Is it when we get judged by others
+While learning to be different.
+
+Or when we have to restart and reset
+While learning more about self.
+
+So are we born with these traits
+Or at every moment a little fear gets in
+And slowly grows inch by inch.
+Until the fearless child becomes full of fears
+Afraid of things that makes him, him.`
   }
 ]
