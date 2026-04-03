@@ -29,7 +29,7 @@ export default function Home() {
                   Photos
                 </h2>
                 <p className="text-white/50 font-light leading-relaxed">
-                  Visual narratives from around the world
+                  Visual stories
                 </p>
               </div>
             </div>
