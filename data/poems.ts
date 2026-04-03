@@ -433,5 +433,17 @@ That for all the what-ifs, and plans, and the lies to stay together
 
 This is the last meeting
 And they don't want to let go`
+  },
+  {
+    id: 'itne-saalo-baad',
+    title: 'इतने सालों बाद मिले हैं',
+    language: 'hindi',
+    image: '/poems/itne-saalo-baad.jpg',
+    text: `Itne saalo baad mile hai, tab bhi phone me
+Kuch kahoge nahi kya?
+
+Itni bhi kya der kardi milne me
+Ab tumse zada
+Tumhari is tasveer se mohabbat ho gyi hai`
   }
 ]
