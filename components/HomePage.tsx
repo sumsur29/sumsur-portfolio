@@ -14,7 +14,7 @@ const quotes = [
   },
   {
     hindi: 'ख़्वाब वो नहीं जो नींद में आए, ख़्वाब वो है जो सोने न दे',
-    english: 'Dreams aren't what come in sleep, dreams are what don't let you sleep'
+    english: "Dreams aren't what come in sleep, dreams are what don't let you sleep"
   },
   {
     hindi: 'अनुभव सारे संभव तरीकों से जीवन को',
