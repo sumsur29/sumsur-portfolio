@@ -143,7 +143,7 @@ export default function HomePage() {
           
           {/* Compact Header */}
           <header className="text-center mb-8 md:mb-12">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-normal mb-4 tracking-tight font-signature whitespace-nowrap">
+            <h1 className="text-6xl sm:text-7xl md:text-8xl font-normal mb-4 tracking-tight font-signature whitespace-nowrap">
               {nameChars.map((char, i) => (
                 <span
                   key={i}
