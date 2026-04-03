@@ -14,8 +14,8 @@ const geistMono = localFont({
   weight: "100 900",
 });
 
-const hamiltonSignature = localFont({
-  src: "./fonts/HamiltonSignature.ttf",
+const berlinaSignature = localFont({
+  src: "./fonts/BerlinaSignature.ttf",
   variable: "--font-signature",
   weight: "400",
 });
@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${notoDevanagari.variable} ${cormorant.variable} ${hamiltonSignature.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${notoDevanagari.variable} ${cormorant.variable} ${berlinaSignature.variable} antialiased`}
       >
         {children}
       </body>
