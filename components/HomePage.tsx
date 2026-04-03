@@ -142,7 +142,7 @@ export default function HomePage() {
         }}
       >
         <Image
-          src="/photos/bw/7d120af0-6abe-42da-b857-5ca631f892b1_rw_3840.jpeg"
+          src="/photos/hero-singer.jpg"
           alt="Background"
           fill
           className="object-cover"
