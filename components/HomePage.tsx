@@ -142,8 +142,8 @@ export default function HomePage() {
         <div className="relative z-20 min-h-full flex flex-col justify-center items-center px-6 py-8 md:py-12">
           
           {/* Compact Header */}
-          <header className="text-center mb-8 md:mb-12">
-            <h1 className="text-6xl sm:text-7xl md:text-8xl font-normal mb-4 tracking-tight font-signature whitespace-nowrap">
+          <header className="text-center mb-6 md:mb-12">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light mb-4 tracking-tight">
               {nameChars.map((char, i) => (
                 <span
                   key={i}
@@ -161,11 +161,11 @@ export default function HomePage() {
             
             <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto mb-4"></div>
             
-            <p className={`text-lg sm:text-lg md:text-xl text-white/80 font-light tracking-wide mb-2 font-devanagari drop-shadow-lg transition-all duration-1000 italic ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+            <p className={`text-base sm:text-lg md:text-xl text-white/80 font-light tracking-wide mb-2 font-devanagari drop-shadow-lg transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
                style={{ animationDelay: '800ms' }}>
               {quote.hindi}
             </p>
-            <p className={`text-base sm:text-base text-white/60 font-light italic drop-shadow-lg transition-all duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}
+            <p className={`text-sm sm:text-base text-white/60 font-light italic drop-shadow-lg transition-all duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}
                style={{ animationDelay: '1000ms' }}>
               {quote.english}
             </p>
