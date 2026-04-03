@@ -5,6 +5,7 @@ export interface Poem {
   text: string
   image?: string
   date?: string
+  context?: string
 }
 
 export const poems: Poem[] = [
@@ -258,5 +259,84 @@ Aur na hi khud ko kuch dikhana hai
 Tu pehle bhi kaafi tha.. aur
 Tu ab bhi kaafi hai..
 Tu kaafi hai!`
+  },
+  {
+    id: 'pahadon-wala-ghar',
+    title: 'पहाड़ों वाला घर',
+    language: 'hindi',
+    image: '/poems/pahadon-wala-ghar.jpg',
+    date: '2026',
+    context: `I clicked this back in 2017 on my way back from the Kheerganga trek. This was my "pahadon wala ghar", my escape from reality. I used to look at this photo when life became tough. Thinking one day I will leave the chaos of the world and start living here peacefully. In 2025, I realized to find the "pahadon wala ghar" is not a journey outwards but a journey inwards. Of finding and accepting self.
+
+Here's raising a toast to 2025 and entering 2026 with a new sense of self. May you find your "pahadon wala ghar" too.`,
+    text: `ये पहाड़ों वाला घर
+मजनूं के पहाड़ों के उस पार
+जॉर्डन के दूर एक मैदान में
+वीरा के पहाड़ के ऊपर
+ये पहाड़ों वाला घर
+
+सोचा था सबने
+कहीं भाग के मिलता है ये घर
+मजनूं को वक्त से
+जॉर्डन को समाज से
+और वीरा को घरवालों से
+कहीं भाग के ही मिलता है
+ये पहाड़ों वाला घर
+
+ढूँढने निकले सब
+एक लंबे सफ़र पे
+कभी साथ कभी अकेले
+दुनिया से दूर
+लड़ झगड़ के
+फिर भी नहीं मिला
+ये पहाड़ों वाला घर
+
+एक दिन सब रुके
+बाहर से हारे
+तो अंदर चले
+जो चाहते थे बाहर
+अंदर ही मिला 
+मजनूं ने अब हर जगह लैला को पाया 
+जॉर्डन ने अपने अंदर के तूफ़ान को अपनाया 
+घरवालों से वीरा ने मन में जो था बताया
+एक अजीब से शांति मिली 
+और ख़ुद ब ख़ुद मिल गया
+ये पहाड़ों वाला घर
+
+मेरा भी ऐसा था एक पहाड़ों वाला घर
+उन्ही की तरह
+पहाड़ के पार खुले मैदान में
+ये पहाड़ों वाला घर
+
+मैंने भी सोचा था
+कहीं भाग के मिलेगा ये घर
+भागता रहा 
+भागता रहा उसी की ओर
+ये पहाड़ों वाला घर
+
+फिर कुछ सालों बाद जब
+जब असली कहानी समझ आई
+मैंने भी बाहर से अंदर गाड़ी घुमाई
+किससे भाग रहा था
+किसे खोज रहा था
+जब ये बातें दोहराई
+बार बार एक ही आवाज़ आई
+
+मैं
+
+ख़ुद ही ख़ुद से भाग रहा था
+ख़ुद पीछे दुनिया आगे लिए जा रहा था
+जो मैं था नहीं वो बनता जा रहा था
+ख़ुद ही ख़ुद से भाग रहा था
+
+मैं
+
+जब रुका, बैठा, जाना, अपनाया ख़ुद को
+बस ऐसे ही
+बाहर ढूँढ रहा था जो मुझमे ही मिला 
+ये पहाड़ों वाला घर
+
+मैं जहाँ हूँ अब वही है
+ये पहाड़ों वाला घर।`
   }
 ]

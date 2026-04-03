@@ -74,6 +74,14 @@ export default function PoemPage({ params }: { params: { id: string } }) {
             </p>
           </header>
 
+          {poem.context && (
+            <div className="mb-12 pb-8 border-b border-white/10">
+              <p className="text-white/60 font-light leading-relaxed whitespace-pre-wrap">
+                {poem.context}
+              </p>
+            </div>
+          )}
+
           <div className="prose prose-invert max-w-none">
             <pre className="font-light text-lg lg:text-xl leading-relaxed whitespace-pre-wrap text-white/90">
 {poem.text}
