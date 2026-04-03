@@ -13,11 +13,8 @@ export default function Home() {
           <p className="text-xl text-white/60 font-light tracking-wide mb-2">
             सफ़र ख़ूबसूरत है मंज़िल से भी
           </p>
-          <p className="text-white/40 font-light italic mb-3">
+          <p className="text-white/40 font-light italic">
             The journey is more beautiful than the destination
-          </p>
-          <p className="text-white/40 mt-3 font-light">
-            Dubai | Cypher Capital
           </p>
         </header>
 
