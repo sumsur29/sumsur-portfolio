@@ -181,34 +181,34 @@ FOR A TIME HAS GONE AND A TIME WILL COME.`
     language: 'hindi',
     image: '/poems/cf355876-2137-4b21-9d05-844abbeb3f64_rw_1200.jpg',
     date: '2024',
-    text: `Diye hai pankh baaz k
-Aur kar diya kaach k ghar me band,
-Sab dikhta to hai par chhune jaau to takra jaata hu
-Har roz khidki ya darwaze ki talaash karta hu,
-Par Kaach ki deewar se takra kar gir jaata hu
+    text: `दिए हैं पंख बाज़ के
+और कर दिया काँच के घर में बंद,
+सब दिखता तो है पर छूने जाऊँ तो टकरा जाता हूँ
+हर रोज़ खिड़की या दरवाज़े की तलाश करता हूँ,
+पर काँच की दीवार से टकरा कर गिर जाता हूँ
 
-Takrata hu, girta hu, ghayal bhi hota hu
-Par rukta nahi hu
-Khule aasmaan me udhne ki Iccha rakhta hu
-Aur Udh k rahuga hi ek din
+टकराता हूँ, गिरता हूँ, घायल भी होता हूँ
+पर रुकता नहीं हूँ
+खुले आसमान में उड़ने की इच्छा रखता हूँ
+और उड़ के रहूँगा ही एक दिन
 
-Ek din to milegi koi khuli khidki
-Nikluga wahi se aur udh jauga
-Chhu luga sab kuch jo dekha tha,
-Chhin luga jab kuch jo socha tha,
-Chhod duga humesha k liye ye kaach ka ghar
+एक दिन तो मिलेगी कोई खुली खिड़की
+निकलूँगा वहीं से और उड़ जाऊँगा
+छू लूँगा सब कुछ जो देखा था,
+छीन लूँगा जो कुछ जो सोचा था,
+छोड़ दूँगा हमेशा के लिए ये काँच का घर
 
-Bas tab tak haar nahi maanuga
-Apni chot ko chaat chaat kar marham lagauga
-Rouga, magar rukuga nahi
-Thakuga, magar thamuga nahi
-Ek din to udh hi jauga
+बस तब तक हार नहीं मानूँगा
+अपनी चोट को चाट चाट कर मरहम लगाऊँगा
+रोऊँगा, मगर रुकूँगा नहीं
+थकूँगा, मगर थमूँगा नहीं
+एक दिन तो उड़ ही जाऊँगा
 
-Baaz hu,Tees Hazaar feet par hi udhuga
-Fir neeche nahi auga
-Chaahe jitna rok lo abhi
-Diye hai pankh baaz k
-To baaz ban k udhta hi jauga`
+बाज़ हूँ, तीस हज़ार फ़ीट पर ही उड़ूँगा
+फिर नीचे नहीं आऊँगा
+चाहे जितना रोक लो अभी
+दिए हैं पंख बाज़ के
+तो बाज़ बन के उड़ता ही जाऊँगा`
   },
   {
     id: 'udhne-do-mujhe',
@@ -216,29 +216,29 @@ To baaz ban k udhta hi jauga`
     language: 'hindi',
     image: '/poems/d680a48a-1ff8-4dfa-bdfa-2c9eca898118_rw_1200 (1).jpg',
     date: '2024',
-    text: `Udhne do mujhe
-Ye kalam mere pankh hai aur kaagaz mera aasmaan
-Yun duniya k niyamo se chalne me kya hi haasil hoga?
+    text: `उड़ने दो मुझे
+ये क़लम मेरे पंख हैं और काग़ज़ मेरा आसमान
+यूँ दुनिया के नियमों से चलने में क्या ही हासिल होगा?
 
-Behne do mujhe
-Ye kalam meri naav hai aur kagaz mera samudra
-Yun maryadaaon k kinaaro par beth kar kya hi haasil hoga?
+बहने दो मुझे
+ये क़लम मेरी नाव है और काग़ज़ मेरा समुद्र
+यूँ मर्यादाओं के किनारों पर बैठ कर क्या ही हासिल होगा?
 
-Naachne do mujhe
-Ye kalam meri dhun hai aur kaagaz mera manch
-Yun betaal duniya me thirakne se kya hi haasil hoga?
+नाचने दो मुझे
+ये क़लम मेरी धुन है और काग़ज़ मेरा मंच
+यूँ बेताल दुनिया में थिरकने से क्या ही हासिल होगा?
 
-Rangane do mujhe
-Ye kalam mere rang hai aur kaagaz mera canvas
-Yun berang duniya ko dekhne se kya hi haasil hoga?
+रंगने दो मुझे
+ये क़लम मेरे रंग हैं और काग़ज़ मेरा कैनवास
+यूँ बेरंग दुनिया को देखने से क्या ही हासिल होगा?
 
-Ladne do mujhe
-Ye kalam meri talwar hai aur kaagaz meri yuddhbhumi
-Yun duniya k bojho se darrne me kya hi haasil hoga?
+लड़ने दो मुझे
+ये क़लम मेरी तलवार है और काग़ज़ मेरी युद्धभूमि
+यूँ दुनिया के बोझों से डरने में क्या ही हासिल होगा?
 
-Jeene do mujhe
-Ye kalam meri saans hai aur kaagaz meri nabz
-Yun mari hui duniya me marr kar kya hi haasil hoga?`
+जीने दो मुझे
+ये क़लम मेरी साँस है और काग़ज़ मेरी नब्ज़
+यूँ मरी हुई दुनिया में मर कर क्या ही हासिल होगा?`
   },
   {
     id: 'tu-kaafi-hai',
@@ -246,27 +246,27 @@ Yun mari hui duniya me marr kar kya hi haasil hoga?`
     language: 'hindi',
     image: '/poems/eb16c74f-1cfe-4250-9052-7dba3c8cfbe4_rw_1200.jpg',
     date: '2024',
-    text: `Maana yeh raat thodi lambi hai
-Thodi shaant aur thodi gehri hai
-Thokre hi to khaege.. aur kya..
-Par, tu kaafi hai
+    text: `माना ये रात थोड़ी लंबी है
+थोड़ी शांत और थोड़ी गहरी है
+ठोकरें ही तो खाएँगे.. और क्या..
+पर, तू काफ़ी है
 
-Maana yeh waqt thoda kharaab hai
-Thoda dheema aur thoda betaab hai
-Dheere hi to chalenge.. aur kya..
-Par, tu kaafi hai
+माना ये वक़्त थोड़ा ख़राब है
+थोड़ा धीमा और थोड़ा बेताब है
+धीरे ही तो चलेंगे.. और क्या..
+पर, तू काफ़ी है
 
-Tu ro mat, na ho hataash,
-Tu kaafi hai is andheri raat k liye,
-Tu kaafi hai is bure waqt k liye
-Kyuki..
+तू रो मत, ना हो हताश,
+तू काफ़ी है इस अंधेरी रात के लिए,
+तू काफ़ी है इस बुरे वक़्त के लिए
+क्योंकि..
 
-Tu kaafi hai khud k liye!
-Tujhe na auro ko kuch batlaana hai
-Aur na hi khud ko kuch dikhana hai
-Tu pehle bhi kaafi tha.. aur
-Tu ab bhi kaafi hai..
-Tu kaafi hai!`
+तू काफ़ी है ख़ुद के लिए!
+तुझे ना औरों को कुछ बतलाना है
+और ना ही ख़ुद को कुछ दिखाना है
+तू पहले भी काफ़ी था.. और
+तू अब भी काफ़ी है..
+तू काफ़ी है!`
   },
   {
     id: 'pahadon-wala-ghar',
@@ -451,11 +451,11 @@ And they don't want to let go`
     language: 'hindi',
     image: '/poems/itne-saalo-baad.jpg',
     date: '2025',
-    text: `Itne saalo baad mile hai, tab bhi phone me
-Kuch kahoge nahi kya?
+    text: `इतने सालों बाद मिले हैं, तब भी फ़ोन में
+कुछ कहोगे नहीं क्या?
 
-Itni bhi kya der kardi milne me
-Ab tumse zada
-Tumhari is tasveer se mohabbat ho gyi hai`
+इतनी भी क्या देरी करदी मिलने में
+अब तुमसे ज़्यादा
+तुम्हारी इस तस्वीर से मोहब्बत हो गयी है`
   }
 ]
