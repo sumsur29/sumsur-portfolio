@@ -132,40 +132,38 @@ export default function HomePage() {
   }, [])
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="min-h-screen bg-black text-white relative">
       
-      {/* Hero Section with Full-Screen Photo */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        
-        {/* Background Photo with Parallax */}
-        <div 
-          className="absolute inset-0 z-0"
-          style={{
-            transform: `translateY(${scrollY * 0.5}px) scale(${1 + scrollY * 0.0003})`
-          }}
-        >
-          <Image
-            src="/photos/bw/98943e81-3e4f-4a9f-a947-537388a46fd4_rw_3840.jpeg"
-            alt="Hero background"
-            fill
-            className="object-cover"
-            priority
-            quality={95}
-          />
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black"></div>
-        </div>
-
-        {/* Noise Texture */}
-        <div 
-          className="absolute inset-0 pointer-events-none z-10 opacity-[0.015]"
-          style={{
-            backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
-            backgroundRepeat: 'repeat'
-          }}
+      {/* Full-Page Fixed Background Photo with Parallax */}
+      <div 
+        className="fixed inset-0 z-0"
+        style={{
+          transform: `translateY(${scrollY * 0.3}px) scale(${1 + scrollY * 0.0002})`
+        }}
+      >
+        <Image
+          src="/photos/bw/7d120af0-6abe-42da-b857-5ca631f892b1_rw_3840.jpeg"
+          alt="Background"
+          fill
+          className="object-cover"
+          priority
+          quality={95}
         />
+        {/* Gradient Overlay - stronger at bottom */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/95"></div>
+      </div>
 
-        {/* Hero Content */}
+      {/* Noise Texture */}
+      <div 
+        className="fixed inset-0 pointer-events-none z-10 opacity-[0.015]"
+        style={{
+          backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
+          backgroundRepeat: 'repeat'
+        }}
+      />
+      
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center z-20">
         <div className="relative z-20 text-center px-6 max-w-4xl">
           <h1 className="text-5xl sm:text-6xl md:text-8xl font-light mb-8 tracking-tight">
             {nameChars.map((char, i) => (
@@ -206,8 +204,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Cards Section */}
-      <section className="relative z-30 bg-black">
+      {/* Cards Section - background continues */}
+      <section className="relative z-30">
         <div className="max-w-5xl mx-auto px-6 py-24">
           
           <div className="grid md:grid-cols-3 gap-8 mb-24">
