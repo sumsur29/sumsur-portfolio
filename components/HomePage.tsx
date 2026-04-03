@@ -134,24 +134,41 @@ export default function HomePage() {
   return (
     <main className="min-h-screen bg-black text-white relative">
       
-      {/* Full-Page Fixed Background Photo with Parallax */}
-      <div 
-        className="fixed inset-0 z-0 w-full h-full overflow-hidden"
-        style={{
-          transform: `translateY(${scrollY * 0.3}px) scale(${1 + scrollY * 0.0002})`,
-          minHeight: '100vh',
-          minWidth: '100vw'
-        }}
-      >
-        <Image
-          src="/photos/hero-singer.jpg"
-          alt="Background"
-          fill
-          className="object-cover w-full h-full"
-          priority
-          quality={95}
-          sizes="100vw"
-        />
+      {/* Full-Page Fixed Background Photo */}
+      <div className="fixed inset-0 z-0 w-full h-full overflow-hidden">
+        {/* Desktop parallax wrapper */}
+        <div 
+          className="hidden md:block absolute inset-0"
+          style={{
+            transform: `translateY(${scrollY * 0.3}px) scale(${1 + scrollY * 0.0002})`,
+            width: '100%',
+            height: '100%'
+          }}
+        >
+          <Image
+            src="/photos/hero-singer.jpg"
+            alt="Background"
+            fill
+            className="object-cover"
+            priority
+            quality={95}
+            sizes="100vw"
+          />
+        </div>
+        
+        {/* Mobile static background */}
+        <div className="md:hidden absolute inset-0 w-full h-full">
+          <Image
+            src="/photos/hero-singer.jpg"
+            alt="Background"
+            fill
+            className="object-cover"
+            priority
+            quality={95}
+            sizes="100vw"
+          />
+        </div>
+        
         {/* Gradient Overlay - stronger at bottom */}
         <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-black/80 via-black/60 to-black/95"></div>
       </div>
