@@ -10,8 +10,11 @@ export default function Home() {
             Sumeet Surana
           </h1>
           <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto mb-6"></div>
-          <p className="text-xl text-white/60 font-light tracking-wide">
-            Builder · Writer · Photographer
+          <p className="text-xl text-white/60 font-light tracking-wide mb-2">
+            सफ़र ख़ूबसूरत है मंज़िल से भी
+          </p>
+          <p className="text-white/40 font-light italic mb-3">
+            The journey is more beautiful than the destination
           </p>
           <p className="text-white/40 mt-3 font-light">
             Dubai | Cypher Capital
