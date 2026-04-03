@@ -139,11 +139,11 @@ export default function HomePage() {
         />
         
         {/* Single Page Content */}
-        <div className="relative z-20 h-full flex flex-col justify-center items-center px-6 py-12">
+        <div className="relative z-20 min-h-full flex flex-col justify-center items-center px-6 py-8 md:py-12">
           
           {/* Compact Header */}
-          <header className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light mb-4 tracking-tight">
+          <header className="text-center mb-8 md:mb-12">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-light mb-3 md:mb-4 tracking-tight">
               {nameChars.map((char, i) => (
                 <span
                   key={i}
