@@ -21,7 +21,7 @@ export default function PoemsPage() {
         </header>
 
         <div className="space-y-6">
-          {poems.map((poem) => (
+          {[...poems].reverse().map((poem) => (
             <Link 
               key={poem.id} 
               href={`/poems/${poem.id}`}
