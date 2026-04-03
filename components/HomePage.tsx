@@ -157,7 +157,7 @@ export default function HomePage() {
         
         <header className="mb-24 text-center">
           {/* Staggered character reveal for name */}
-          <h1 className="text-7xl font-light mb-6 tracking-tight">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-light mb-6 tracking-tight">
             {nameChars.map((char, i) => (
               <span
                 key={i}
@@ -176,7 +176,7 @@ export default function HomePage() {
           <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/30 to-transparent mx-auto mb-6 animate-pulse-slow"></div>
           
           {/* Quote with word-by-word reveal */}
-          <p className={`text-xl text-white/60 font-light tracking-wide mb-2 font-devanagari transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+          <p className={`text-lg sm:text-xl text-white/60 font-light tracking-wide mb-2 font-devanagari transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
              style={{ animationDelay: '800ms' }}>
             {quote.hindi}
           </p>
