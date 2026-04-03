@@ -31,30 +31,11 @@ interface CardProps {
   description: string
   index: number
   gradient: string
-  scrollY: number
 }
 
-function GlassmorphicCard({ href, title, emoji, description, index, gradient, scrollY }: CardProps) {
+function GlassmorphicCard({ href, title, emoji, description, index, gradient }: CardProps) {
   const cardRef = useRef<HTMLDivElement>(null)
   const [rotation, setRotation] = useState({ x: 0, y: 0 })
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-        }
-      },
-      { threshold: 0.1 }
-    )
-
-    if (cardRef.current) {
-      observer.observe(cardRef.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return
@@ -77,19 +58,18 @@ function GlassmorphicCard({ href, title, emoji, description, index, gradient, sc
     setRotation({ x: 0, y: 0 })
   }
 
-  // Calculate parallax offset for this card
-  const parallaxOffset = (index + 1) * 0.05
-
   return (
     <Link href={href} className="group">
       <div
         ref={cardRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className={`relative overflow-hidden rounded-2xl border border-white/20 backdrop-blur-xl bg-white/[0.03] p-12 hover:bg-white/[0.06] transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/10 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+        className="relative overflow-hidden rounded-2xl border border-white/20 backdrop-blur-xl bg-white/[0.03] p-8 md:p-10 hover:bg-white/[0.06] transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-white/10"
         style={{
-          transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg) translateY(${-scrollY * parallaxOffset}px)`,
-          transitionDelay: `${index * 100}ms`
+          transform: `perspective(1000px) rotateX(${rotation.x}deg) rotateY(${rotation.y}deg)`,
+          animation: 'fadeInUp 0.8s ease-out forwards',
+          opacity: 0,
+          animationDelay: `${index * 150}ms`
         }}
       >
         <div className={`absolute top-0 right-0 w-32 h-32 ${gradient} rounded-full blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-500`}></div>
@@ -101,13 +81,13 @@ function GlassmorphicCard({ href, title, emoji, description, index, gradient, sc
         ></div>
         
         <div className="relative z-10">
-          <div className="text-5xl mb-6 font-light transform group-hover:scale-110 transition-transform duration-300">
+          <div className="text-4xl md:text-5xl mb-4 font-light transform group-hover:scale-110 transition-transform duration-300">
             {emoji}
           </div>
-          <h2 className="text-2xl font-light mb-3 tracking-wide group-hover:text-white transition-colors">
+          <h2 className="text-xl md:text-2xl font-light mb-2 tracking-wide group-hover:text-white transition-colors">
             {title}
           </h2>
-          <p className="text-white/50 font-light leading-relaxed group-hover:text-white/70 transition-colors">
+          <p className="text-sm md:text-base text-white/50 font-light leading-relaxed group-hover:text-white/70 transition-colors">
             {description}
           </p>
         </div>
@@ -120,85 +100,50 @@ export default function HomePage() {
   const [quote, setQuote] = useState(quotes[0])
   const [mounted, setMounted] = useState(false)
   const [nameChars, setNameChars] = useState<string[]>([])
-  const [scrollY, setScrollY] = useState(0)
 
   useEffect(() => {
     setMounted(true)
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
     setQuote(randomQuote)
     setNameChars('Sumeet Surana'.split(''))
-
-    const handleScroll = () => {
-      setScrollY(window.scrollY)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   return (
     <>
       <LiquidCursor />
       
-      <main className="min-h-screen bg-black text-white relative">
+      <main className="h-screen bg-black text-white relative overflow-hidden">
         
         {/* Full-Page Fixed Background Photo */}
-        <div className="fixed inset-0 z-0 w-full h-full overflow-hidden">
-          {/* Desktop parallax wrapper */}
-          <div 
-            className="hidden md:block absolute inset-0"
-            style={{
-              transform: `translateY(${scrollY * 0.5}px) scale(${1 + scrollY * 0.0003})`,
-              width: '100%',
-              height: '100%'
-            }}
-          >
-            <Image
-              src="/photos/hero-singer.jpg"
-              alt="Background"
-              fill
-              className="object-cover"
-              priority
-              quality={95}
-              sizes="100vw"
-            />
-          </div>
-          
-          {/* Mobile static background */}
-          <div className="md:hidden absolute inset-0 w-full h-full">
-            <Image
-              src="/photos/hero-singer.jpg"
-              alt="Background"
-              fill
-              className="object-cover"
-              priority
-              quality={95}
-              sizes="100vw"
-            />
-          </div>
-          
-          {/* Gradient Overlay - stronger at bottom */}
-          <div className="absolute inset-0 w-full h-full bg-gradient-to-b from-black/80 via-black/60 to-black/95"></div>
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/photos/hero-singer.jpg"
+            alt="Background"
+            fill
+            className="object-cover"
+            priority
+            quality={95}
+            sizes="100vw"
+          />
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/70 to-black/90"></div>
         </div>
 
         {/* Noise Texture */}
         <div 
-          className="fixed inset-0 pointer-events-none z-10 opacity-[0.015]"
+          className="absolute inset-0 pointer-events-none z-10 opacity-[0.015]"
           style={{
             backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 200 200\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\'/%3E%3C/svg%3E")',
             backgroundRepeat: 'repeat'
           }}
         />
         
-        {/* Hero Section - moves slower than cards */}
-        <section 
-          className="relative h-screen flex items-center justify-center z-20"
-          style={{
-            transform: `translateY(${scrollY * 0.2}px)`
-          }}
-        >
-          <div className="relative z-20 text-center px-6 max-w-4xl">
-            <h1 className="text-5xl sm:text-6xl md:text-8xl font-light mb-8 tracking-tight">
+        {/* Single Page Content */}
+        <div className="relative z-20 h-full flex flex-col justify-center items-center px-6 py-12">
+          
+          {/* Compact Header */}
+          <header className="text-center mb-12">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-light mb-4 tracking-tight">
               {nameChars.map((char, i) => (
                 <span
                   key={i}
@@ -214,50 +159,21 @@ export default function HomePage() {
               ))}
             </h1>
             
-            <div 
-              className="h-px w-32 bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto mb-8"
-              style={{
-                transform: `translateY(${scrollY * 0.1}px)`
-              }}
-            ></div>
+            <div className="h-px w-24 bg-gradient-to-r from-transparent via-white/40 to-transparent mx-auto mb-4"></div>
             
-            <p className={`text-xl sm:text-2xl text-white/80 font-light tracking-wide mb-4 font-devanagari drop-shadow-lg transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-               style={{ 
-                 animationDelay: '800ms',
-                 transform: `translateY(${scrollY * 0.15}px)`
-               }}>
+            <p className={`text-base sm:text-lg md:text-xl text-white/80 font-light tracking-wide mb-2 font-devanagari drop-shadow-lg transition-all duration-1000 ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
+               style={{ animationDelay: '800ms' }}>
               {quote.hindi}
             </p>
-            <p className={`text-lg text-white/60 font-light italic drop-shadow-lg transition-all duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}
-               style={{ 
-                 animationDelay: '1000ms',
-                 transform: `translateY(${scrollY * 0.15}px)`
-               }}>
+            <p className={`text-sm sm:text-base text-white/60 font-light italic drop-shadow-lg transition-all duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}
+               style={{ animationDelay: '1000ms' }}>
               {quote.english}
             </p>
+          </header>
 
-            {/* Scroll Indicator - fades out on scroll */}
-            <div 
-              className={`absolute bottom-12 left-1/2 -translate-x-1/2 transition-all duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}
-              style={{ 
-                animationDelay: '1500ms',
-                opacity: Math.max(0, 1 - scrollY / 300)
-              }}
-            >
-              <div className="animate-bounce">
-                <svg className="w-6 h-6 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Cards Section - each card moves at different speed */}
-        <section className="relative z-30">
-          <div className="max-w-5xl mx-auto px-6 py-24">
-            
-            <div className="grid md:grid-cols-3 gap-8 mb-24">
+          {/* Cards Grid */}
+          <div className="w-full max-w-5xl">
+            <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-8">
               <GlassmorphicCard
                 href="/photos"
                 title="Photos"
@@ -265,7 +181,6 @@ export default function HomePage() {
                 description="Visual stories"
                 index={0}
                 gradient="bg-gradient-to-br from-blue-500 to-cyan-500"
-                scrollY={scrollY}
               />
               
               <GlassmorphicCard
@@ -275,7 +190,6 @@ export default function HomePage() {
                 description="Words from the heart"
                 index={1}
                 gradient="bg-gradient-to-br from-purple-500 to-pink-500"
-                scrollY={scrollY}
               />
               
               <GlassmorphicCard
@@ -285,49 +199,31 @@ export default function HomePage() {
                 description="Side projects and prototypes"
                 index={2}
                 gradient="bg-gradient-to-br from-green-500 to-emerald-500"
-                scrollY={scrollY}
               />
             </div>
 
-            <div 
-              className="text-center mb-16"
-              style={{
-                transform: `translateY(${-scrollY * 0.08}px)`
-              }}
-            >
-              <Link href="/about" className="magnetic-link inline-block text-white/60 hover:text-white transition-colors duration-300 font-light relative group">
-                <span className="relative z-10">About me →</span>
-                <span className="absolute inset-0 bg-white/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+            {/* Footer Links */}
+            <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-white/40 font-light text-sm transition-all duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}
+                 style={{ animationDelay: '1400ms' }}>
+              <Link href="/about" className="magnetic-link hover:text-white transition-colors duration-300">
+                About
               </Link>
+              <a href="https://www.linkedin.com/in/suranasumeet" target="_blank" rel="noopener noreferrer" 
+                 className="magnetic-link hover:text-white transition-colors duration-300">
+                LinkedIn
+              </a>
+              <a href="https://instagram.com/sum.sur" target="_blank" rel="noopener noreferrer"
+                 className="magnetic-link hover:text-white transition-colors duration-300">
+                Instagram
+              </a>
+              <a href="mailto:sumeet9surana@gmail.com" 
+                 className="magnetic-link hover:text-white transition-colors duration-300">
+                Contact
+              </a>
             </div>
-
-            <footer 
-              className="pt-16 border-t border-white/10"
-              style={{
-                transform: `translateY(${-scrollY * 0.1}px)`
-              }}
-            >
-              <div className="flex justify-center gap-12 text-white/40 font-light">
-                <a href="https://www.linkedin.com/in/suranasumeet" target="_blank" rel="noopener noreferrer" 
-                   className="magnetic-link relative group hover:text-white transition-colors duration-300">
-                  <span className="relative z-10">LinkedIn</span>
-                  <span className="absolute inset-0 -inset-x-2 bg-white/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                </a>
-                <a href="https://instagram.com/sum.sur" target="_blank" rel="noopener noreferrer"
-                   className="magnetic-link relative group hover:text-white transition-colors duration-300">
-                  <span className="relative z-10">Instagram</span>
-                  <span className="absolute inset-0 -inset-x-2 bg-white/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                </a>
-                <a href="mailto:sumeet9surana@gmail.com" 
-                   className="magnetic-link relative group hover:text-white transition-colors duration-300">
-                  <span className="relative z-10">Contact</span>
-                  <span className="absolute inset-0 -inset-x-2 bg-white/5 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
-                </a>
-              </div>
-            </footer>
-
           </div>
-        </section>
+
+        </div>
 
       </main>
     </>
