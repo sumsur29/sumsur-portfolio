@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { articles } from '@/data/articles'
 import { notFound } from 'next/navigation'
 import ReactMarkdown from 'react-markdown'
+import type { Components } from 'react-markdown'
 
 export async function generateStaticParams() {
   return articles.map((article) => ({
@@ -41,30 +42,30 @@ export default function ArticlePage({ params }: { params: { slug: string } }) {
             <div className="h-px w-24 bg-gradient-to-r from-white/30 to-transparent"></div>
           </header>
 
-          <div className="prose prose-invert max-w-none
-            prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-white prose-headings:leading-tight
-            prose-h1:text-5xl prose-h1:mb-8 prose-h1:mt-16 prose-h1:font-bold
-            prose-h2:text-4xl prose-h2:mb-6 prose-h2:mt-14 prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-4
-            prose-h3:text-3xl prose-h3:mb-5 prose-h3:mt-12
-            prose-h4:text-2xl prose-h4:mb-4 prose-h4:mt-10
-            prose-p:text-white/90 prose-p:leading-[1.8] prose-p:font-light prose-p:mb-8 prose-p:text-[18px]
-            prose-a:text-blue-400 prose-a:underline prose-a:decoration-blue-400/30 hover:prose-a:decoration-blue-400 prose-a:transition-colors
-            prose-strong:text-white prose-strong:font-semibold
-            prose-em:text-white/95 prose-em:italic
-            prose-code:text-pink-400 prose-code:bg-white/5 prose-code:px-2 prose-code:py-1 prose-code:rounded prose-code:font-mono prose-code:text-sm
-            prose-pre:bg-white/5 prose-pre:border prose-pre:border-white/10 prose-pre:rounded-lg prose-pre:p-4 prose-pre:overflow-x-auto prose-pre:my-8
-            prose-blockquote:border-l-4 prose-blockquote:border-white/30 prose-blockquote:pl-6 prose-blockquote:italic prose-blockquote:text-white/80 prose-blockquote:font-light prose-blockquote:my-8 prose-blockquote:py-2
-            prose-hr:border-white/10 prose-hr:my-12
-            prose-ul:text-white/90 prose-ul:my-8 prose-ul:space-y-3 prose-ul:text-[18px]
-            prose-ol:text-white/90 prose-ol:my-8 prose-ol:space-y-3 prose-ol:text-[18px]
-            prose-li:font-light prose-li:leading-[1.8]
-            prose-li:marker:text-white/50
-            prose-img:rounded-lg prose-img:my-10
-            prose-table:border-collapse prose-table:border prose-table:border-white/10 prose-table:my-8
-            prose-th:border prose-th:border-white/10 prose-th:bg-white/5 prose-th:p-4 prose-th:text-left prose-th:font-semibold
-            prose-td:border prose-td:border-white/10 prose-td:p-4
-          ">
-            <ReactMarkdown>{article.content}</ReactMarkdown>
+          <div className="article-content">
+            <ReactMarkdown 
+              components={{
+                h1: ({node, ...props}) => <h1 className="text-5xl font-bold mb-8 mt-16 tracking-tight leading-tight text-white" {...props} />,
+                h2: ({node, ...props}) => <h2 className="text-4xl font-semibold mb-6 mt-14 tracking-tight text-white border-b border-white/10 pb-4" {...props} />,
+                h3: ({node, ...props}) => <h3 className="text-3xl font-semibold mb-5 mt-12 tracking-tight text-white" {...props} />,
+                h4: ({node, ...props}) => <h4 className="text-2xl font-semibold mb-4 mt-10 tracking-tight text-white" {...props} />,
+                p: ({node, ...props}) => <p className="text-[19px] leading-[1.9] font-light text-white/90 mb-8" {...props} />,
+                strong: ({node, ...props}) => <strong className="font-semibold text-white" {...props} />,
+                em: ({node, ...props}) => <em className="italic text-white/95" {...props} />,
+                a: ({node, ...props}) => <a className="text-blue-400 underline decoration-blue-400/30 hover:decoration-blue-400 transition-colors" {...props} />,
+                ul: ({node, ...props}) => <ul className="my-8 space-y-3 text-[19px] text-white/90" {...props} />,
+                ol: ({node, ...props}) => <ol className="my-8 space-y-3 text-[19px] text-white/90 list-decimal" {...props} />,
+                li: ({node, ...props}) => <li className="font-light leading-[1.9] marker:text-white/50" {...props} />,
+                blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-white/30 pl-6 italic text-white/80 font-light my-8 py-2" {...props} />,
+                hr: ({node, ...props}) => <hr className="border-white/10 my-12" {...props} />,
+                code: ({node, inline, ...props}: any) => 
+                  inline 
+                    ? <code className="text-pink-400 bg-white/5 px-2 py-1 rounded font-mono text-sm" {...props} />
+                    : <code className="block bg-white/5 border border-white/10 rounded-lg p-4 overflow-x-auto my-8 text-sm" {...props} />,
+              } as Components}
+            >
+              {article.content}
+            </ReactMarkdown>
           </div>
         </article>
 
