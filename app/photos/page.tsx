@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { getPhotos } from '@/lib/photos'
 
 const categories = [
@@ -68,8 +69,21 @@ export default async function Photos() {
               href={`/photos/${category.slug}`}
               className="group"
             >
-              <div className="relative overflow-hidden rounded-none border border-white/10 bg-white/[0.02] p-10 hover:bg-white/[0.04] transition-all duration-500 hover:border-white/20 h-full">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-transparent rounded-full blur-3xl"></div>
+              <div className="relative overflow-hidden rounded-none border border-white/10 bg-black p-10 hover:border-white/20 h-full transition-all duration-500 group-hover:scale-[1.02]">
+                {/* Background Image */}
+                {category.slug && (
+                  <div className="absolute inset-0 z-0">
+                    <Image
+                      src={`/photos/${category.slug}/preview.jpg`}
+                      alt={category.title}
+                      fill
+                      className="object-cover opacity-30 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-black/60"></div>
+                  </div>
+                )}
                 
                 <div className="relative">
                   <div className="flex items-start justify-between mb-4">
