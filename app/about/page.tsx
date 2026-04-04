@@ -33,23 +33,19 @@ export default function About() {
 
             <div className="space-y-6 text-white/70 font-light leading-relaxed text-lg">
               <p>
-                I'm Sumeet — builder, writer, and photographer based in Dubai.
+                I'm Sumeet — Partner at Cypher Capital, backing builders across crypto, AI, and emerging tech out of Dubai. IIT Kharagpur engineer turned INSEAD MBA — from deep tech fundamentals to making bets on the future.
               </p>
 
               <p>
-                Currently working at Cypher Capital, where I invest in early-stage crypto and blockchain companies. 
-                Before that, I spent time exploring different ways to create, think, and build.
+                Builder at heart. Writer of essays, poetry, and whatever's bouncing around in my head. Photographer when I need to slow down. Father of two little daughters who are the reason I build, and the reason I stop building.
               </p>
 
               <p>
-                I write about technology, markets, life, and ideas that don't fit anywhere else. 
-                My photography is an attempt to capture the world as I see it — quiet moments, strange patterns, 
-                things that make you pause.
+                I write about technology, markets, life, and ideas that don't fit anywhere else. My photography is an attempt to capture the world as I see it - quiet moments, strange patterns, things that make you pause.
               </p>
 
               <p>
-                When I'm not working, I'm usually tinkering with side projects, reading too much, 
-                or trying to convince myself that the next app idea is worth building.
+                When I'm not working, I'm usually tinkering with side projects, reading too much, or trying to convince myself that the next app idea is worth building.
               </p>
 
               <p>
