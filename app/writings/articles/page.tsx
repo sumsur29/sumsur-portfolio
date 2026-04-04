@@ -21,7 +21,7 @@ export default function Articles() {
         </header>
 
         <div className="space-y-12">
-          {articles.map((article) => (
+          {[...articles].reverse().map((article) => (
             <Link
               key={article.slug}
               href={`/writings/articles/${article.slug}`}
