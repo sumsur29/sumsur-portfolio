@@ -457,5 +457,54 @@ And they don't want to let go`
 इतनी भी क्या देरी करदी मिलने में
 अब तुमसे ज़्यादा
 तुम्हारी इस तस्वीर से मोहब्बत हो गयी है`
+  },
+  {
+    id: 'shield',
+    title: 'Shield',
+    language: 'english',
+    image: '/poems/shield.jpg',
+    date: '2026',
+    text: `People scared me
+They were always staring
+My every move, they were always judging
+ 
+The way they looked at me
+I felt naked
+Like they saw through me
+ 
+I am a fluke, an imposter
+As if they knew it
+ 
+My truth, my lies
+All my imperfections
+They pointed at me and laughed
+ 
+I tried to fit in
+God knows how hard
+ 
+I tried to talk like them
+Walked like them
+Even laughed like them
+Sometimes I succeeded
+But most times I failed
+ 
+The more I faked it
+The less I made it
+ 
+Until I saw the shield around me
+It was not made of rock but glass
+ 
+The eyes that stared were all my own
+The pointing fingers, my own
+My own projections
+My own thoughts
+ 
+That what was trying to protect me
+Was hurting me the most
+Maybe I needed it once, but not anymore
+ 
+So I took a rock and broke the shield
+And now I am free
+I can see now that there was noone as scary as me`
   }
 ]
