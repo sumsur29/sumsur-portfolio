@@ -139,7 +139,7 @@ export default function HomePage() {
         />
         
         {/* Single Page Content */}
-        <div className="relative z-20 min-h-full flex flex-col justify-center items-center px-6 py-8 md:py-12 lg:py-8">
+        <div className="relative z-20 min-h-full flex flex-col justify-start items-center px-6 pt-16 md:pt-24 pb-12">
           
           {/* Compact Header */}
           <header className="text-center mb-6">
