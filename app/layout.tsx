@@ -34,7 +34,16 @@ const cormorant = Cormorant({
 
 export const metadata: Metadata = {
   title: "Sumeet Surana",
-  description: "Builder, Writer, Photographer. The journey is more beautiful than the destination.",
+  description: "Partner at Cypher Capital, backing builders across crypto, AI, and emerging tech. Builder, writer, photographer, father.",
+  openGraph: {
+    title: "Sumeet Surana",
+    description: "Partner at Cypher Capital, backing builders across crypto, AI, and emerging tech.",
+  },
+  twitter: {
+    card: "summary",
+    title: "Sumeet Surana",
+    description: "Partner at Cypher Capital, backing builders across crypto, AI, and emerging tech.",
+  },
 };
 
 export default function RootLayout({
