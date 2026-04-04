@@ -139,10 +139,10 @@ export default function HomePage() {
         />
         
         {/* Single Page Content */}
-        <div className="relative z-20 min-h-full flex flex-col justify-center items-center px-6 py-8 md:py-12">
+        <div className="relative z-20 min-h-full flex flex-col justify-center items-center px-6 py-8 md:py-16">
           
           {/* Compact Header */}
-          <header className="text-center mb-6 md:mb-12">
+          <header className="text-center mb-6 md:mb-8">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-light mb-4 tracking-tight">
               {nameChars.map((char, i) => (
                 <span
@@ -173,7 +173,7 @@ export default function HomePage() {
 
           {/* Cards Grid */}
           <div className="w-full max-w-5xl">
-            <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-8">
+            <div className="grid md:grid-cols-3 gap-4 md:gap-6 mb-6">
               <GlassmorphicCard
                 href="/photos"
                 title="Photos"
