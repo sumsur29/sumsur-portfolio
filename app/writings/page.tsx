@@ -4,12 +4,14 @@ const categories = [
   {
     title: "Articles",
     slug: "articles",
-    description: "Essays, reflections, and thoughts"
+    description: "Essays, reflections, and thoughts",
+    emoji: "📝"
   },
   {
     title: "Poems",
     slug: "poems",
-    description: "Poetry and verse"
+    description: "Poetry and verse",
+    emoji: "✍️"
   }
 ]
 
@@ -39,10 +41,11 @@ export default function Writings() {
               href={`/writings/${category.slug}`}
               className="group"
             >
-              <div className="relative overflow-hidden rounded-none border border-white/10 bg-white/[0.02] p-10 hover:bg-white/[0.04] transition-all duration-500 hover:border-white/20 h-full">
+              <div className="relative overflow-hidden rounded-none border border-white/10 bg-white/[0.02] p-12 hover:bg-white/[0.04] transition-all duration-500 hover:border-white/20 h-full">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-500/10 to-transparent rounded-full blur-3xl"></div>
                 
                 <div className="relative">
+                  <div className="text-5xl mb-6 font-light">{category.emoji}</div>
                   <div className="flex items-start justify-between mb-4">
                     <h2 className="text-2xl font-light tracking-wide group-hover:text-white transition-colors">
                       {category.title}

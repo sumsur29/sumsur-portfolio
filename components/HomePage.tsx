@@ -184,10 +184,10 @@ export default function HomePage() {
               />
               
               <GlassmorphicCard
-                href="/poems"
-                title="Poems"
+                href="/writings"
+                title="Writings"
                 emoji="✍️"
-                description="Words from the heart"
+                description="Essays, poems, and thoughts"
                 index={1}
                 gradient="bg-gradient-to-br from-purple-500 to-pink-500"
               />

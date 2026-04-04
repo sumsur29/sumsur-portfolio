@@ -1,9 +1,7 @@
 import Link from 'next/link'
-import { getAllArticles } from '@/lib/articles'
+import { articles } from '@/data/articles'
 
 export default function Articles() {
-  const articles = getAllArticles()
-
   return (
     <main className="min-h-screen bg-black text-white">
       <div className="max-w-5xl mx-auto px-6 py-16">
@@ -26,7 +24,7 @@ export default function Articles() {
           {articles.map((article) => (
             <Link
               key={article.slug}
-              href={`/writings/${article.slug}`}
+              href={`/writings/articles/${article.slug}`}
               className="block group"
             >
               <article className="border-b border-white/5 pb-12 last:border-0">
