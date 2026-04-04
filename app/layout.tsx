@@ -34,15 +34,15 @@ const cormorant = Cormorant({
 
 export const metadata: Metadata = {
   title: "Sumeet Surana",
-  description: "Partner at Cypher Capital, backing builders across crypto, AI, and emerging tech. Builder, writer, photographer, father.",
+  description: "Builder at heart. Writer of essays, poetry, and whatever's bouncing around in my head. Photographer when I need to slow down. Father of two little daughters who are the reason I build, and the reason I stop building.",
   openGraph: {
     title: "Sumeet Surana",
-    description: "Partner at Cypher Capital, backing builders across crypto, AI, and emerging tech.",
+    description: "Builder at heart. Writer of essays, poetry, and whatever's bouncing around in my head. Photographer when I need to slow down. Father of two little daughters who are the reason I build, and the reason I stop building.",
   },
   twitter: {
     card: "summary",
     title: "Sumeet Surana",
-    description: "Partner at Cypher Capital, backing builders across crypto, AI, and emerging tech.",
+    description: "Builder at heart. Writer of essays, poetry, and whatever's bouncing around in my head. Photographer when I need to slow down. Father of two little daughters who are the reason I build, and the reason I stop building.",
   },
 };
 
