@@ -4,6 +4,7 @@ import { useEffect, useState, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import LiquidCursor from './LiquidCursor'
+import TodaysMuse from './TodaysMuse'
 
 const quotes = [
   {
@@ -170,6 +171,9 @@ export default function HomePage() {
               {quote.english}
             </p>
           </header>
+
+          {/* Today's Muse Featured Section */}
+          <TodaysMuse />
 
           {/* Cards Grid */}
           <div className="w-full max-w-5xl">
