@@ -172,9 +172,6 @@ export default function HomePage() {
             </p>
           </header>
 
-          {/* Today's Muse Featured Section */}
-          <TodaysMuse />
-
           {/* Cards Grid */}
           <div className="w-full max-w-5xl">
             <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-10 md:mb-12">
@@ -206,7 +203,14 @@ export default function HomePage() {
               />
             </div>
 
-            {/* Footer Links */}
+            {/* Today's Muse Featured Section */}
+            <div className="mt-12 md:mt-16">
+              <TodaysMuse />
+            </div>
+          </div>
+
+          {/* Footer Links */}
+          <div className="w-full max-w-5xl">
             <div className={`flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 text-white/40 font-light text-sm transition-all duration-1000 ${mounted ? 'opacity-100' : 'opacity-0'}`}
                  style={{ animationDelay: '1400ms' }}>
               <Link href="/about" className="magnetic-link hover:text-white transition-colors duration-300">

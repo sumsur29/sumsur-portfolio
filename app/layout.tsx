@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import { Noto_Sans_Devanagari, Cormorant } from "next/font/google";
-import ScrollProgress from "@/components/ScrollProgress";
 import ColorModeToggle from "@/components/ColorModeToggle";
 import "./globals.css";
 
@@ -58,7 +57,6 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${notoDevanagari.variable} ${cormorant.variable} ${gravitySignature.variable} antialiased`}
       >
-        <ScrollProgress />
         <ColorModeToggle />
         {children}
       </body>
