@@ -39,11 +39,17 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Sumeet Surana",
     description: "Builder at heart. Writer of essays, poetry, and whatever's bouncing around in my head. Photographer when I need to slow down. Father of two little daughters who are the reason I build, and the reason I stop building.",
+    images: [{
+      url: '/og-image.jpg',
+      width: 1200,
+      height: 630,
+    }],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: "Sumeet Surana",
     description: "Builder at heart. Writer of essays, poetry, and whatever's bouncing around in my head. Photographer when I need to slow down. Father of two little daughters who are the reason I build, and the reason I stop building.",
+    images: ['/og-image.jpg'],
   },
 };
 
