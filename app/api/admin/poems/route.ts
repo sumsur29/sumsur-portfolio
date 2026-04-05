@@ -2,62 +2,14 @@ import { NextRequest, NextResponse } from 'next/server';
 import { requireAuth } from '@/lib/auth';
 import fs from 'fs/promises';
 import path from 'path';
+import { poems as importedPoems } from '@/data/poems';
 
 const poemsPath = path.join(process.cwd(), 'data', 'poems.ts');
 
 async function getPoems() {
-  try {
-    const content = await fs.readFile(poemsPath, 'utf-8');
-    
-    // Extract the poems array by finding the export statement
-    // This is more robust than regex - we just find the array boundaries
-    const arrayStart = content.indexOf('export const poems: Poem[] = [');
-    if (arrayStart === -1) {
-      throw new Error('Could not find poems array');
-    }
-    
-    // Find the closing bracket by counting brackets
-    let depth = 0;
-    let arrayContent = '';
-    let foundStart = false;
-    
-    for (let i = arrayStart; i < content.length; i++) {
-      const char = content[i];
-      if (char === '[') {
-        depth++;
-        foundStart = true;
-      } else if (char === ']') {
-        depth--;
-        if (depth === 0 && foundStart) {
-          arrayContent = content.substring(arrayStart, i + 1);
-          break;
-        }
-      }
-    }
-    
-    if (!arrayContent) {
-      throw new Error('Could not parse poems array');
-    }
-    
-    // Extract just the array part
-    const arrayMatch = arrayContent.match(/= (\[[\s\S]*\])/);
-    if (!arrayMatch) {
-      throw new Error('Could not extract array content');
-    }
-    
-    // Convert to valid JSON by replacing template literals and single quotes
-    let jsonString = arrayMatch[1]
-      .replace(/`([^`]*)`/g, '"$1"')  // Replace backticks with quotes
-      .replace(/\\n/g, '\\n')  // Preserve newlines
-      .replace(/(\w+):/g, '"$1":')  // Quote keys
-      .replace(/'/g, '"');  // Replace single quotes with double quotes
-    
-    const poems = JSON.parse(jsonString);
-    return poems;
-  } catch (error) {
-    console.error('Error loading poems:', error);
-    throw new Error('Could not load poems file');
-  }
+  // Simple approach: just use the imported poems array
+  // This works because Next.js compiles TypeScript for us
+  return importedPoems;
 }
 
 async function savePoems(poems: any[]) {
@@ -80,8 +32,9 @@ async function savePoems(poems: any[]) {
       lines.push(`    context: \`${poem.context}\`,`);
     }
     
-    // Use template literal for multiline text
-    lines.push(`    text: \`${poem.text}\``);
+    // Escape backticks in the text
+    const escapedText = poem.text.replace(/`/g, '\\`');
+    lines.push(`    text: \`${escapedText}\``);
     lines.push(`  }`);
     
     return lines.join('\n');
