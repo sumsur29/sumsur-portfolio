@@ -7,10 +7,53 @@ const poemsPath = path.join(process.cwd(), 'data', 'poems.ts');
 
 async function getPoems() {
   try {
-    // Use dynamic import with cache busting to get fresh data
-    // Add timestamp to force reload after saves
-    const poemsModule = await import(`@/data/poems?t=${Date.now()}`);
-    return poemsModule.poems;
+    const content = await fs.readFile(poemsPath, 'utf-8');
+    
+    // Extract the poems array by finding the export statement
+    // This is more robust than regex - we just find the array boundaries
+    const arrayStart = content.indexOf('export const poems: Poem[] = [');
+    if (arrayStart === -1) {
+      throw new Error('Could not find poems array');
+    }
+    
+    // Find the closing bracket by counting brackets
+    let depth = 0;
+    let arrayContent = '';
+    let foundStart = false;
+    
+    for (let i = arrayStart; i < content.length; i++) {
+      const char = content[i];
+      if (char === '[') {
+        depth++;
+        foundStart = true;
+      } else if (char === ']') {
+        depth--;
+        if (depth === 0 && foundStart) {
+          arrayContent = content.substring(arrayStart, i + 1);
+          break;
+        }
+      }
+    }
+    
+    if (!arrayContent) {
+      throw new Error('Could not parse poems array');
+    }
+    
+    // Extract just the array part
+    const arrayMatch = arrayContent.match(/= (\[[\s\S]*\])/);
+    if (!arrayMatch) {
+      throw new Error('Could not extract array content');
+    }
+    
+    // Convert to valid JSON by replacing template literals and single quotes
+    let jsonString = arrayMatch[1]
+      .replace(/`([^`]*)`/g, '"$1"')  // Replace backticks with quotes
+      .replace(/\\n/g, '\\n')  // Preserve newlines
+      .replace(/(\w+):/g, '"$1":')  // Quote keys
+      .replace(/'/g, '"');  // Replace single quotes with double quotes
+    
+    const poems = JSON.parse(jsonString);
+    return poems;
   } catch (error) {
     console.error('Error loading poems:', error);
     throw new Error('Could not load poems file');
@@ -69,7 +112,11 @@ export async function GET() {
     const poems = await getPoems();
     return NextResponse.json(poems);
   } catch (error) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    console.error('GET /api/admin/poems error:', error);
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : 'Failed to load poems' }, 
+      { status: 500 }
+    );
   }
 }
 
@@ -89,9 +136,10 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(newPoem);
   } catch (error) {
+    console.error('POST /api/admin/poems error:', error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'An error occurred' },
-      { status: error instanceof Error && error.message === 'Unauthorized' ? 401 : 500 }
+      { status: 500 }
     );
   }
 }
@@ -117,9 +165,10 @@ export async function PUT(request: NextRequest) {
 
     return NextResponse.json(poems[index]);
   } catch (error) {
+    console.error('PUT /api/admin/poems error:', error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'An error occurred' },
-      { status: error instanceof Error && error.message === 'Unauthorized' ? 401 : 500 }
+      { status: 500 }
     );
   }
 }
@@ -139,9 +188,10 @@ export async function DELETE(request: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
+    console.error('DELETE /api/admin/poems error:', error);
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'An error occurred' },
-      { status: error instanceof Error && error.message === 'Unauthorized' ? 401 : 500 }
+      { status: 500 }
     );
   }
 }
