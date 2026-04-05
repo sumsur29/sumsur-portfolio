@@ -49,7 +49,17 @@ export default function TodaysMuse() {
   return (
     <div className="w-full max-w-5xl mb-12 md:mb-16">
       <Link href={featured.href} className="group block">
-        <div className="relative overflow-hidden rounded-lg border border-white/20 bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.06] hover:border-white/30 transition-all duration-500">
+        <div className="relative overflow-hidden rounded-2xl border border-white/20 backdrop-blur-xl bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-amber-500/10">
+          
+          {/* Gradient orb accent */}
+          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+          
+          {/* Shine effect on hover */}
+          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+               style={{
+                 background: 'linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%)'
+               }}
+          ></div>
           
           {/* Background Image if available */}
           {featured.image && (
