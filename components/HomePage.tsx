@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import LiquidCursor from './LiquidCursor'
 import TodaysMuse from './TodaysMuse'
-import { getRandomColorfulPhoto } from '@/lib/photos'
+import { getRandomColorfulPhoto } from '@/lib/photos-client'
 
 const quotes = [
   {

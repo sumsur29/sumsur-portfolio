@@ -6,6 +6,9 @@ export interface Photo {
   path: string
 }
 
+/**
+ * Server-side function to get photos for a category (used in SSR pages)
+ */
 export async function getPhotos(category: string): Promise<Photo[]> {
   const photosDir = path.join(process.cwd(), 'public', 'photos', category)
   
