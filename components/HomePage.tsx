@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import LiquidCursor from './LiquidCursor'
 import TodaysMuse from './TodaysMuse'
+import { getRandomColorfulPhoto } from '@/lib/photos'
 
 const quotes = [
   {
@@ -101,12 +102,19 @@ export default function HomePage() {
   const [quote, setQuote] = useState(quotes[0])
   const [mounted, setMounted] = useState(false)
   const [nameChars, setNameChars] = useState<string[]>([])
+  const [backgroundImage, setBackgroundImage] = useState<string>('/photos/hero-singer.jpg')
 
   useEffect(() => {
     setMounted(true)
     const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
     setQuote(randomQuote)
     setNameChars('Sumeet Surana'.split(''))
+    
+    // Get random colorful photo for background
+    const randomPhoto = getRandomColorfulPhoto()
+    if (randomPhoto) {
+      setBackgroundImage(randomPhoto)
+    }
   }, [])
 
   return (
@@ -118,10 +126,10 @@ export default function HomePage() {
         {/* Full-Page Fixed Background Photo */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/photos/hero-singer.jpg"
+            src={backgroundImage}
             alt="Background"
             fill
-            className="object-cover"
+            className="object-cover transition-opacity duration-1000"
             priority
             quality={95}
             sizes="100vw"
