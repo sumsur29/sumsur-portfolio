@@ -7,29 +7,45 @@ const poemsPath = path.join(process.cwd(), 'data', 'poems.ts');
 
 async function getPoems() {
   try {
-    const data = await fs.readFile(poemsPath, 'utf-8');
-    // Extract the poems array from the TypeScript file
-    // More robust regex that handles multiline arrays and optional semicolons
-    const match = data.match(/export const poems: Poem\[\] = (\[[\s\S]*\]);?\s*$/m);
-    if (!match) {
-      console.error('Failed to parse poems file. File content:', data.substring(0, 200));
-      throw new Error('Could not parse poems file - regex match failed');
-    }
-    
-    try {
-      return JSON.parse(match[1]);
-    } catch (parseError) {
-      console.error('JSON parse error:', parseError);
-      console.error('Extracted content:', match[1].substring(0, 500));
-      throw new Error('Could not parse poems array as JSON');
-    }
+    // Use dynamic import with cache busting to get fresh data
+    // Add timestamp to force reload after saves
+    const poemsModule = await import(`@/data/poems?t=${Date.now()}`);
+    return poemsModule.poems;
   } catch (error) {
-    console.error('Error reading poems file:', error);
-    throw error;
+    console.error('Error loading poems:', error);
+    throw new Error('Could not load poems file');
   }
 }
 
 async function savePoems(poems: any[]) {
+  // Format poems with template literals for multiline text
+  const formatPoem = (poem: any) => {
+    const lines = [
+      `  {`,
+      `    id: '${poem.id}',`,
+      `    title: '${poem.title}',`,
+      `    language: '${poem.language}',`,
+    ];
+    
+    if (poem.image) {
+      lines.push(`    image: '${poem.image}',`);
+    }
+    if (poem.date) {
+      lines.push(`    date: '${poem.date}',`);
+    }
+    if (poem.context) {
+      lines.push(`    context: \`${poem.context}\`,`);
+    }
+    
+    // Use template literal for multiline text
+    lines.push(`    text: \`${poem.text}\``);
+    lines.push(`  }`);
+    
+    return lines.join('\n');
+  };
+  
+  const poemsArray = poems.map(formatPoem).join(',\n');
+  
   const content = `export interface Poem {
   id: string
   title: string
@@ -40,7 +56,9 @@ async function savePoems(poems: any[]) {
   context?: string
 }
 
-export const poems: Poem[] = ${JSON.stringify(poems, null, 2)}
+export const poems: Poem[] = [
+${poemsArray}
+]
 `;
   await fs.writeFile(poemsPath, content);
 }
