@@ -51,8 +51,8 @@ export default function TodaysMuse() {
       <Link href={featured.href} className="group block">
         <div className="relative overflow-hidden rounded-2xl border border-white/20 backdrop-blur-xl bg-white/[0.03] hover:bg-white/[0.06] transition-all duration-500 hover:border-white/30 hover:shadow-2xl hover:shadow-amber-500/10">
           
-          {/* Gradient orb accent */}
-          <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
+          {/* Gradient orb accent - matching other cards */}
+          <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full blur-3xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
           
           {/* Shine effect on hover */}
           <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -60,20 +60,6 @@ export default function TodaysMuse() {
                  background: 'linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.05) 50%, transparent 100%)'
                }}
           ></div>
-          
-          {/* Background Image if available */}
-          {featured.image && (
-            <div className="absolute inset-0 z-0">
-              <Image
-                src={featured.image}
-                alt={featured.title}
-                fill
-                className="object-cover opacity-20 group-hover:opacity-30 group-hover:scale-105 transition-all duration-700"
-                sizes="(max-width: 1200px) 100vw, 1200px"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-black via-black/90 to-black/70"></div>
-            </div>
-          )}
 
           <div className="relative z-10 p-8 md:p-12">
             <div className="flex items-center gap-3 mb-4">
