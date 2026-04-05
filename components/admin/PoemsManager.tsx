@@ -28,6 +28,8 @@ export default function PoemsManager() {
   const [showForm, setShowForm] = useState(false);
   const [toast, setToast] = useState<{ message: string; type: 'success' | 'error' } | null>(null);
   const [loading, setLoading] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [uploadedImagePath, setUploadedImagePath] = useState<string | null>(null);
 
   const { register, handleSubmit, reset, setValue, formState: { errors } } = useForm<PoemForm>();
 
@@ -84,6 +86,7 @@ export default function PoemsManager() {
     setValue('image', poem.image || '');
     setValue('date', poem.date || '');
     setValue('context', poem.context || '');
+    setUploadedImagePath(poem.image || null);
     setShowForm(true);
   };
 
@@ -106,9 +109,39 @@ export default function PoemsManager() {
     }
   };
 
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploading(true);
+    const formData = new FormData();
+    formData.append('image', file);
+
+    try {
+      const res = await fetch('/api/admin/poems/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setUploadedImagePath(data.path);
+        setValue('image', data.path);
+        showToast('Image uploaded successfully', 'success');
+      } else {
+        showToast('Failed to upload image', 'error');
+      }
+    } catch (error) {
+      showToast('An error occurred during upload', 'error');
+    } finally {
+      setUploading(false);
+    }
+  };
+
   const handleCancel = () => {
     setShowForm(false);
     setEditingId(null);
+    setUploadedImagePath(null);
     reset();
   };
 
@@ -167,13 +200,22 @@ export default function PoemsManager() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-200 mb-2">Image Path (optional)</label>
+              <label className="block text-sm font-medium text-gray-200 mb-2">Poem Image (optional)</label>
               <input
-                {...register('image')}
-                type="text"
-                placeholder="/poems/image.jpg"
-                className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-lg text-white"
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+                disabled={uploading}
+                className="w-full px-4 py-2 bg-white/5 border border-white/20 rounded-lg text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-purple-600 file:text-white hover:file:bg-purple-700 file:cursor-pointer"
               />
+              {uploading && <p className="text-sm text-gray-400 mt-2">Uploading image...</p>}
+              {uploadedImagePath && (
+                <div className="mt-2 flex items-center gap-2">
+                  <span className="text-sm text-green-400">✓ Uploaded:</span>
+                  <span className="text-sm text-gray-300">{uploadedImagePath}</span>
+                </div>
+              )}
+              <input type="hidden" {...register('image')} value={uploadedImagePath || ''} />
             </div>
           </div>
 

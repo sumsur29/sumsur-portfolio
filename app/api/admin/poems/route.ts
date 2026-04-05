@@ -6,11 +6,27 @@ import path from 'path';
 const poemsPath = path.join(process.cwd(), 'data', 'poems.ts');
 
 async function getPoems() {
-  const data = await fs.readFile(poemsPath, 'utf-8');
-  // Extract the poems array from the TypeScript file
-  const match = data.match(/export const poems: Poem\[\] = (\[[\s\S]*?\]);?\s*$/m);
-  if (!match) throw new Error('Could not parse poems file');
-  return JSON.parse(match[1]);
+  try {
+    const data = await fs.readFile(poemsPath, 'utf-8');
+    // Extract the poems array from the TypeScript file
+    // More robust regex that handles multiline arrays and optional semicolons
+    const match = data.match(/export const poems: Poem\[\] = (\[[\s\S]*\]);?\s*$/m);
+    if (!match) {
+      console.error('Failed to parse poems file. File content:', data.substring(0, 200));
+      throw new Error('Could not parse poems file - regex match failed');
+    }
+    
+    try {
+      return JSON.parse(match[1]);
+    } catch (parseError) {
+      console.error('JSON parse error:', parseError);
+      console.error('Extracted content:', match[1].substring(0, 500));
+      throw new Error('Could not parse poems array as JSON');
+    }
+  } catch (error) {
+    console.error('Error reading poems file:', error);
+    throw error;
+  }
 }
 
 async function savePoems(poems: any[]) {
