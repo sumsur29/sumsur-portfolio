@@ -1,36 +1,111 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Sumsur Portfolio
 
-## Getting Started
+A modern, elegant portfolio website built with Next.js 14, featuring a complete Content Management System.
 
-First, run the development server:
+## Features
+
+- 📝 **Blog/Articles** - Write and publish essays
+- ✍️ **Poetry** - Showcase poems in Hindi and English
+- 📷 **Photo Gallery** - Categorized photography portfolio
+- 👤 **About Page** - Personal introduction
+- 🔐 **Admin CMS** - Secure content management system
+
+## 🚀 Quick Start
+
+### For Viewing the Site
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### For Managing Content (CMS)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. **Set your password** in `.env.local`:
+   ```bash
+   ADMIN_PASSWORD=your_secure_password
+   ```
 
-## Learn More
+2. **Start the server**:
+   ```bash
+   npm run dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+3. **Access the CMS**:
+   ```
+   http://localhost:3000/admin
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📚 Documentation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **[QUICKSTART.md](./QUICKSTART.md)** - Get started with the CMS in 2 minutes
+- **[CMS_DOCUMENTATION.md](./CMS_DOCUMENTATION.md)** - Complete technical documentation
+- **[CMS_SUMMARY.md](./CMS_SUMMARY.md)** - Implementation details and features
 
-## Deploy on Vercel
+## 🛠️ Tech Stack
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Framework:** Next.js 14 (App Router)
+- **Styling:** TailwindCSS
+- **Authentication:** iron-session
+- **Forms:** React Hook Form
+- **Image Optimization:** Sharp
+- **Language:** TypeScript
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📁 Project Structure
+
+```
+├── app/                    # Next.js app directory
+│   ├── admin/             # CMS admin panel
+│   ├── api/admin/         # CMS API routes
+│   ├── writings/          # Blog/articles pages
+│   ├── poems/             # Poetry pages
+│   └── photos/            # Photo gallery
+├── components/            # React components
+│   └── admin/            # CMS management components
+├── data/                  # Content data (JSON, MD, TS)
+├── public/photos/         # Photo gallery images
+└── lib/                   # Utilities and helpers
+```
+
+## 🎨 CMS Features
+
+- **Articles Management** - Create, edit, delete blog posts with markdown
+- **Poems Management** - Manage poetry in multiple languages
+- **Photo Gallery** - Upload and organize photos by category
+- **Settings** - Edit About page and social links
+- **Secure** - Password-protected with session authentication
+- **Beautiful UI** - Glassmorphic design matching portfolio aesthetic
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Push to GitHub
+2. Import in [Vercel](https://vercel.com)
+3. Add environment variables:
+   ```
+   ADMIN_PASSWORD=your_password
+   SESSION_SECRET=32_char_random_string
+   NODE_ENV=production
+   ```
+4. Deploy
+
+**Note:** Photo uploads require Vercel Blob Storage or external storage (S3, R2) in production.
+
+### VPS/Server
+
+```bash
+git clone <repository>
+cd sumsur-site
+npm install
+npm run build
+npm start
+```
+
+Create `.env.local` with production credentials.
+
+## 📝 License
+
+All rights reserved.
