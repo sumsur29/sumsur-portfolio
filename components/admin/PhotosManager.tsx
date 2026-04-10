@@ -52,7 +52,7 @@ export default function PhotosManager() {
       });
 
       if (res.ok) {
-        showToast(`${files.length} photo(s) uploaded successfully`, 'success');
+        showToast(`${files.length} photo(s) uploaded — deploying in ~1-2 min`, 'success');
         fetchPhotos();
       } else {
         showToast('Failed to upload photos', 'error');
@@ -74,7 +74,7 @@ export default function PhotosManager() {
       });
 
       if (res.ok) {
-        showToast('Photo deleted successfully', 'success');
+        showToast('Photo deleted — deploying in ~1-2 min', 'success');
         fetchPhotos();
       } else {
         showToast('Failed to delete photo', 'error');
@@ -144,26 +144,32 @@ export default function PhotosManager() {
 
       {/* Photo Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        {currentPhotos.map((photo) => (
-          <div key={photo} className="relative group bg-white/5 rounded-xl overflow-hidden border border-white/10">
-            <img
-              src={`/photos/${selectedCategory}/${photo}`}
-              alt={photo}
-              className="w-full h-48 object-cover"
-            />
-            <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-              <button
-                onClick={() => handleDelete(selectedCategory, photo)}
-                className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-all"
-              >
-                Delete
-              </button>
+        {currentPhotos.map((photo) => {
+          const isUrl = photo.startsWith('http');
+          const imgSrc = isUrl ? photo : `/photos/${selectedCategory}/${photo}`;
+          const displayName = isUrl ? photo.split('/').pop() || 'blob' : photo;
+
+          return (
+            <div key={photo} className="relative group bg-white/5 rounded-xl overflow-hidden border border-white/10">
+              <img
+                src={imgSrc}
+                alt={displayName}
+                className="w-full h-48 object-cover"
+              />
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                <button
+                  onClick={() => handleDelete(selectedCategory, photo)}
+                  className="px-4 py-2 bg-red-500 hover:bg-red-600 text-white rounded-lg transition-all"
+                >
+                  Delete
+                </button>
+              </div>
+              <div className="p-2 bg-black/40">
+                <p className="text-white text-xs truncate">{displayName}</p>
+              </div>
             </div>
-            <div className="p-2 bg-black/40">
-              <p className="text-white text-xs truncate">{photo}</p>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {currentPhotos.length === 0 && (

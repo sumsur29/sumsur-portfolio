@@ -54,7 +54,7 @@ export default function ArticlesManager() {
       });
 
       if (res.ok) {
-        showToast(`Article ${editingId ? 'updated' : 'created'} successfully`, 'success');
+        showToast(`Article ${editingId ? 'updated' : 'created'} — deploying in ~1-2 min`, 'success');
         fetchArticles();
         handleCancel();
       } else {
@@ -85,7 +85,7 @@ export default function ArticlesManager() {
     try {
       const res = await fetch(`/api/admin/articles?id=${id}`, { method: 'DELETE' });
       if (res.ok) {
-        showToast('Article deleted successfully', 'success');
+        showToast('Article deleted — deploying in ~1-2 min', 'success');
         fetchArticles();
       } else {
         showToast('Failed to delete article', 'error');

@@ -65,7 +65,7 @@ export default function PoemsManager() {
       });
 
       if (res.ok) {
-        showToast(`Poem ${editingId ? 'updated' : 'created'} successfully`, 'success');
+        showToast(`Poem ${editingId ? 'updated' : 'created'} — deploying in ~1-2 min`, 'success');
         fetchPoems();
         handleCancel();
       } else {
@@ -97,7 +97,7 @@ export default function PoemsManager() {
     try {
       const res = await fetch(`/api/admin/poems?id=${id}`, { method: 'DELETE' });
       if (res.ok) {
-        showToast('Poem deleted successfully', 'success');
+        showToast('Poem deleted — deploying in ~1-2 min', 'success');
         fetchPoems();
       } else {
         showToast('Failed to delete poem', 'error');

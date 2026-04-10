@@ -1,47 +1,24 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { requireAuth } from '@/lib/auth';
-import fs from 'fs/promises';
-import path from 'path';
+import { readJSONFromGitHub, writeJSONToGitHub, getFileFromGitHub, commitFileToGitHub } from '@/lib/github';
 
-const settingsPath = path.join(process.cwd(), 'data', 'settings.json');
-const aboutMdPath = path.join(process.cwd(), 'data', 'about.md');
-
-async function ensureSettingsFile() {
-  try {
-    await fs.access(settingsPath);
-  } catch {
-    await fs.writeFile(
-      settingsPath,
-      JSON.stringify({ social: { linkedin: '', instagram: '', email: '' } }, null, 2)
-    );
-  }
-}
+const SETTINGS_PATH = 'data/settings.json';
+const ABOUT_PATH = 'data/about.md';
 
 async function getSettings() {
-  await ensureSettingsFile();
-  const data = await fs.readFile(settingsPath, 'utf-8');
-  const settings = JSON.parse(data);
+  const settings = await readJSONFromGitHub<any>(SETTINGS_PATH);
 
-  // Try to read about.md
+  // Also fetch about.md content
   try {
-    settings.about = await fs.readFile(aboutMdPath, 'utf-8');
+    const aboutFile = await getFileFromGitHub(ABOUT_PATH);
+    if (aboutFile) {
+      settings.about = aboutFile.content;
+    }
   } catch {
     settings.about = '';
   }
 
   return settings;
-}
-
-async function saveSettings(settings: any) {
-  const { about, ...rest } = settings;
-
-  // Save settings.json
-  await fs.writeFile(settingsPath, JSON.stringify(rest, null, 2));
-
-  // Save about.md
-  if (about !== undefined) {
-    await fs.writeFile(aboutMdPath, about);
-  }
 }
 
 export async function GET() {
@@ -50,7 +27,11 @@ export async function GET() {
     const settings = await getSettings();
     return NextResponse.json(settings);
   } catch (error) {
-    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+    const status = error instanceof Error && error.message === 'Unauthorized' ? 401 : 500;
+    return NextResponse.json(
+      { error: error instanceof Error ? error.message : 'Failed to load settings' },
+      { status }
+    );
   }
 }
 
@@ -58,13 +39,22 @@ export async function PUT(request: NextRequest) {
   try {
     await requireAuth();
     const body = await request.json();
-    await saveSettings(body);
+    const { about, ...rest } = body;
+
+    // Save settings.json (social links, etc.)
+    await writeJSONToGitHub(SETTINGS_PATH, rest, 'CMS: Update settings');
+
+    // Save about.md separately
+    if (about !== undefined) {
+      await commitFileToGitHub(ABOUT_PATH, about, 'CMS: Update about page');
+    }
 
     return NextResponse.json({ success: true });
   } catch (error) {
+    const status = error instanceof Error && error.message === 'Unauthorized' ? 401 : 500;
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'An error occurred' },
-      { status: error instanceof Error && error.message === 'Unauthorized' ? 401 : 500 }
+      { status }
     );
   }
 }

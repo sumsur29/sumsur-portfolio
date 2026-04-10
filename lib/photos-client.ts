@@ -33,6 +33,10 @@ export function getRandomColorfulPhoto(): string {
   // Pick random photo
   const randomPhoto = colorfulPhotos[Math.floor(Math.random() * colorfulPhotos.length)];
   
+  // Handle both blob URLs and local filenames
+  if (randomPhoto.filename.startsWith('http')) {
+    return randomPhoto.filename;
+  }
   return `/photos/${randomPhoto.category}/${randomPhoto.filename}`;
 }
 

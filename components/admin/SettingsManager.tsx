@@ -71,7 +71,7 @@ export default function SettingsManager() {
       });
 
       if (res.ok) {
-        showToast('Settings saved successfully', 'success');
+        showToast('Settings saved — deploying in ~1-2 min', 'success');
         fetchSettings();
       } else {
         showToast('Failed to save settings', 'error');

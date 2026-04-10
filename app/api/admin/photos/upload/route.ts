@@ -1,20 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { requireAuth } from '@/lib/auth';
-import fs from 'fs/promises';
-import path from 'path';
-import sharp from 'sharp';
+import { readJSONFromGitHub, writeJSONToGitHub } from '@/lib/github';
+import { put } from '@vercel/blob';
 
-const photoIndexPath = path.join(process.cwd(), 'lib', 'photo-index.json');
-const publicPhotosPath = path.join(process.cwd(), 'public', 'photos');
-
-async function getPhotoIndex() {
-  const data = await fs.readFile(photoIndexPath, 'utf-8');
-  return JSON.parse(data);
-}
-
-async function savePhotoIndex(index: any) {
-  await fs.writeFile(photoIndexPath, JSON.stringify(index, null, 2));
-}
+const PHOTO_INDEX_PATH = 'lib/photo-index.json';
 
 export async function POST(request: NextRequest) {
   try {
@@ -27,46 +16,44 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Category and photos are required' }, { status: 400 });
     }
 
-    const categoryPath = path.join(publicPhotosPath, category);
-    
-    // Ensure category directory exists
-    await fs.mkdir(categoryPath, { recursive: true });
-
-    const photoIndex = await getPhotoIndex();
+    const photoIndex = await readJSONFromGitHub<Record<string, string[]>>(PHOTO_INDEX_PATH);
     if (!photoIndex[category]) {
       photoIndex[category] = [];
     }
 
-    const uploadedFiles = [];
+    const uploadedFiles: string[] = [];
 
     for (const photo of photos) {
-      const buffer = Buffer.from(await photo.arrayBuffer());
-      const filename = `${Date.now()}-${photo.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`;
-      const filepath = path.join(categoryPath, filename);
+      // Upload to Vercel Blob
+      const blob = await put(
+        `photos/${category}/${Date.now()}-${photo.name.replace(/[^a-zA-Z0-9.-]/g, '_')}`,
+        photo,
+        { access: 'public' }
+      );
 
-      // Optimize image with sharp
-      await sharp(buffer)
-        .resize(3840, 3840, { fit: 'inside', withoutEnlargement: true })
-        .jpeg({ quality: 85 })
-        .toFile(filepath);
-
-      photoIndex[category].push(filename);
-      uploadedFiles.push(filename);
+      // Store the full Blob URL in the index
+      photoIndex[category].push(blob.url);
+      uploadedFiles.push(blob.url);
     }
 
-    // Save updated index
-    await savePhotoIndex(photoIndex);
+    // Commit updated index to GitHub
+    await writeJSONToGitHub(
+      PHOTO_INDEX_PATH,
+      photoIndex,
+      `CMS: Upload ${uploadedFiles.length} photo(s) to ${category}`
+    );
 
-    return NextResponse.json({ 
-      success: true, 
+    return NextResponse.json({
+      success: true,
       files: uploadedFiles,
-      count: uploadedFiles.length 
+      count: uploadedFiles.length,
     });
   } catch (error) {
     console.error('Upload error:', error);
+    const status = error instanceof Error && error.message === 'Unauthorized' ? 401 : 500;
     return NextResponse.json(
       { error: error instanceof Error ? error.message : 'An error occurred' },
-      { status: error instanceof Error && error.message === 'Unauthorized' ? 401 : 500 }
+      { status }
     );
   }
 }
